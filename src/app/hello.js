@@ -3,6 +3,6 @@ angular
   .component('app', {
     templateUrl: 'app/hello.html',
     controller: function () {
-      this.hello = 'Hello World!';
+      this.hello = 'Start training TODAY!';
     }
   });
