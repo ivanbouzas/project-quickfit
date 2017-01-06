@@ -5,14 +5,23 @@ function createProgramController($http, $state, ProgramService) {
     $ctrl.exercises = angular.fromJson(response.data.results);
   });
   var missing = false;
+  console.log($ctrl.programTitle);
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
   }
+  $ctrl.HighlowChange = function (index, item, change) {
+    $ctrl.exercisesNew.splice(index, 1);
+    if (change) {
+      $ctrl.exercisesNew.splice(index+1, 0, item);
+    } else {
+      $ctrl.exercisesNew.splice(index-1, 0, item);
+    }      
+  }
   $ctrl.saveProgram = function () {
-    if (angular.isDefined($ctrl.programTitle)) {
+    if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
       var programs = ProgramService.getPrograms();
       var newprog = {
         title: $ctrl.programTitle,
@@ -23,8 +32,7 @@ function createProgramController($http, $state, ProgramService) {
     } else {
       if (!missing) {
         angular.element('#progTitle').attr('style', 'border:solid 2px red;');
-        angular.element('#progTitle').parent().html(angular.element('#progTitle').parent().html() +
-        '<strong style="color:red;">Missing Title</strong>');
+        angular.element('#progTitle').after('<strong style="color:red;">Missing Title</strong>');
         missing = true;
       }
       return;

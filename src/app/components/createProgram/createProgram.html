@@ -1,27 +1,33 @@
 <div class="component">
   <div class="col-sm-12 col-sm-offset-4">
     <h2>Title : 
-    <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title"/></h2>
+    <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title" />
+    </h2>
   </div>
-  <div class="col-sm-6 col-sm-offset-2"><h2>Your Workout<h2></div>
-  <div class="col-sm-4"><h2>Database Workout<h2></div>
+  <div class="col-sm-6 col-sm-offset-2"><h2>Your Workout</h2></div>
+  <div class="col-sm-4"><h2>Database Workout</h2></div>
   <div class="col-sm-4 col-sm-offset-2 listExercise">
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
-      <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item">
-        <div>{{item.name}}</div>
-        <div class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></div> 
+      <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item col-xs-12">
+        <div class="itemName col-xs-3">{{item.name}}</div>        
+        <div class="YWBtn col-xs-3 col-xs-offset-6">
+          <span class="btn btn-default glyphicon glyphicon-menu-up" ng-click="$ctrl.HighlowChange($index, item, false)"></span> 
+          <span class="btn btn-default glyphicon glyphicon-menu-down" ng-click="$ctrl.HighlowChange($index, item, true)"></span>  
+          <span class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></span>                 
+        </div>        
       </li>
     </ul>
+    <button class="saveBtn btn btn-default" ng-click="$ctrl.saveProgram()">Save Workout</button>
   </div>
   <div class="col-sm-4 listExercise">  
     <input type="" name="">  
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
       <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item">
-        <div class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></div>    
-        <div class="">{{item.name}}</div>            
+        <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span>    
+        <div class="itemName">{{item.name}}</div>            
       </li>
     </ul>
   </div>
-  <button classe="saveBtn" ng-click="$ctrl.saveProgram()">Save</button>
 
-</div>
+
+</div> 
