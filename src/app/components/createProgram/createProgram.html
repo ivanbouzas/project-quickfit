@@ -1,26 +1,27 @@
 <div class="component">
-  <div>
-  	Title : 
-  	<input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title"/>
+  <div class="col-sm-12 col-sm-offset-4">
+    <h2>Title : 
+    <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title"/></h2>
   </div>
-  <div class="col-sm-6 listExercise">
-    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" >
-      <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item">
-        {{item.name}}
+  <div class="col-sm-6 col-sm-offset-2"><h2>Your Workout<h2></div>
+  <div class="col-sm-4"><h2>Database Workout<h2></div>
+  <div class="col-sm-4 col-sm-offset-2 listExercise">
+    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
+      <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item">
+        <div>{{item.name}}</div>
+        <div class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></div> 
       </li>
     </ul>
   </div>
-  <div class="col-sm-6 listExercise">
-    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises">
-      <li ng-repeat="item in $ctrl.exercises track by $index" class="item">
-        {{item.name}}
-        <div class="col-sm-1">
-          <span ng-click="$ctrl.selectExercise(item)" class="glyphicon glyphicon-plus"></span>
-        </div>        
+  <div class="col-sm-4 listExercise">  
+    <input type="" name="">  
+    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
+      <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item">
+        <div class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></div>    
+        <div class="">{{item.name}}</div>            
       </li>
     </ul>
   </div>
-
-  <button ng-click="$ctrl.saveProgram()">Save</button>
+  <button classe="saveBtn" ng-click="$ctrl.saveProgram()">Save</button>
 
 </div>

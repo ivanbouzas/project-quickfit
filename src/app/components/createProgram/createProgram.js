@@ -8,6 +8,9 @@ function createProgramController($http, $state, ProgramService) {
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
   };
+  $ctrl.removeExercise = function (index) {
+    $ctrl.exercisesNew.splice(index, 1);
+  }
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle)) {
       var programs = ProgramService.getPrograms();
