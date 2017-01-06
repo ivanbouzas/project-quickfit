@@ -1,6 +1,26 @@
 <div class="component">
   <div>
   	Title : 
-  	<input ng-model="$ctrl.program" type="textbox" name="title"/>
+  	<input ng-model="$ctrl.programTitle" type="textbox" name="title"/>
   </div>
+  <div class="col-sm-6 listExercise">
+    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" >
+      <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item">
+        {{item.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-6 listExercise">
+    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises">
+      <li ng-repeat="item in $ctrl.exercises track by $index" class="item">
+        {{item.name}}
+        <div class="col-sm-1">
+          <span ng-click="$ctrl.selectExercise(item)" class="glyphicon glyphicon-plus"></span>
+        </div>        
+      </li>
+    </ul>
+  </div>
+
+  <button ng-click="$ctrl.saveProgram()">Save</button>
+
 </div>
