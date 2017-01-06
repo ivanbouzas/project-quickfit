@@ -17,7 +17,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       component: 'programs'
     })
     .state('program', {
-      url: '/program',
+      url: '/program/:id',
       component: 'program'
     })
     .state('createProgram', {

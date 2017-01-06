@@ -1,7 +1,7 @@
 <div class="component">
   <button ui-sref="createProgram">Create new program</button>
   <ul>
-  	<li ng-repeat="e in $ctrl.getPrograms() track by $index">
+  	<li ng-repeat="e in $ctrl.programs track by $index">
 	  <a ui-sref="program({id:$index})">{{ e.title }}</a>     	  
   	</li>
   </ul>  

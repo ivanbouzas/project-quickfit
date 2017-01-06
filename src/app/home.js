@@ -3,6 +3,6 @@ angular
   .component('home', {
     templateUrl: 'app/home.html',
     controller: function () {
-      var $ctrl = this;
+
     }
   });
