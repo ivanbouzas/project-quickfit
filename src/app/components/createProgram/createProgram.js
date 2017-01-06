@@ -5,21 +5,20 @@ function createProgramController($http, $state, ProgramService) {
     $ctrl.exercises = angular.fromJson(response.data.results);
   });
   var missing = false;
-  console.log($ctrl.programTitle);
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
-  }
+  };
   $ctrl.HighlowChange = function (index, item, change) {
     $ctrl.exercisesNew.splice(index, 1);
     if (change) {
-      $ctrl.exercisesNew.splice(index+1, 0, item);
+      $ctrl.exercisesNew.splice(index + 1, 0, item);
     } else {
-      $ctrl.exercisesNew.splice(index-1, 0, item);
+      $ctrl.exercisesNew.splice(index - 1, 0, item);
     }      
-  }
+  };
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
       var programs = ProgramService.getPrograms();
@@ -39,6 +38,10 @@ function createProgramController($http, $state, ProgramService) {
     }
     $state.go('programs');
   };
+  $ctrl.getDetail = function (index) {
+    $ctrl.exeDetailId = index;
+    angular.element('#popDetailExe').attr('style', 'display:block;');
+  }
 }
 
 angular

@@ -4,9 +4,10 @@
     <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title" />
     </h2>
   </div>
-  <div class="col-sm-6 col-sm-offset-2"><h2>Your Workout</h2></div>
-  <div class="col-sm-4"><h2>Database Workout</h2></div>
+  
+  
   <div class="col-sm-4 col-sm-offset-2 listExercise">
+  <div class=""><h2>Your Workout</h2></div>
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
       <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item col-xs-12">
         <div class="itemName col-xs-3">{{item.name}}</div>        
@@ -20,14 +21,16 @@
     <button class="saveBtn btn btn-default" ng-click="$ctrl.saveProgram()">Save Workout</button>
   </div>
   <div class="col-sm-4 listExercise">  
+  <div class=""><h2>Database Exercises</h2></div>
     <input type="" name="">  
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
       <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item">
-        <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span>    
-        <div class="itemName">{{item.name}}</div>            
+        <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
+        <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail($index)"></span>    
+        <div class="itemName">{{item.name}}</div>  
       </li>
     </ul>
   </div>
-
+<exe-detail exe-detail-id="$ctrl.exeDetailId"></exe-detail>
 
 </div> 

@@ -28,3 +28,10 @@ ul{
 .YWBtn{
 	display: inline-block;
 }
+.popDetailExe{
+	top: 25%;
+	width: 33%;
+	background-color: lightgrey;
+	position: fixed;
+	z-index: 999;
+}
