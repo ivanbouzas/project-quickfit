@@ -1,7 +1,7 @@
 angular
   .module('app')
-  .component('app', {
-    templateUrl: 'app/hello.html',
+  .component('home', {
+    templateUrl: 'app/home.html',
     controller: function () {
       var $ctrl = this;
     }

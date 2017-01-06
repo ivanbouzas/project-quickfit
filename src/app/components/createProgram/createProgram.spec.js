@@ -1,14 +1,14 @@
-describe('clendar component', function () {
+describe('createProgram component', function () {
   beforeEach(module('app', function ($provide) {
-    $provide.factory('clendar', function () {
+    $provide.factory('createProgram', function () {
       return {
-        templateUrl: 'app/clendar.html'
+        templateUrl: 'app/createProgram.html'
       };
     });
   }));
 
   it('should...', angular.mock.inject(function ($rootScope, $compile) {
-    var element = $compile('<clendar></clendar>')($rootScope);
+    var element = $compile('<createProgram></createProgram>')($rootScope);
     $rootScope.$digest();
     expect(element).not.toBeNull();
   }));
