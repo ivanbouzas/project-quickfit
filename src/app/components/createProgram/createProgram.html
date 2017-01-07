@@ -1,26 +1,66 @@
 <div class="component">
 
-  <div class="col-sm-12">
-    <h1 class="col-xs-12 text-center">Create Your Workout</h1>
-    <h2 class="col-xs-12 text-center">Title : 
-    <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title" />
-    </h2>
+  <div class="col-xs-12">
+    <div class="col-xs-12 text-center"><h1>Create Your Workout</h1></div>
+    <div class="col-xs-12 text-center">
+      <h2>
+        Title
+        <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title" />
+      </h2>      
+    </div>    
   </div>
-  <div class="col-sm-4 col-sm-offset-2 listExercise text-center">
-    <div class=""><h2>Your Workout</h2></div>
-    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
+  <div class="col-xs-12">
+  <div class="col-sm-5 col-sm-offset-1 listExercise text-center">
+    <div class="col-xs-12"><h2>Your Workout</h2></div>
+    <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group col-xs-12">
       <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item col-xs-12">
-        <div class="itemName col-xs-5">{{item.name}}</div>        
-        <div class="YWBtn col-xs-3 col-xs-offset-4">
-          <span class="btn btn-default glyphicon glyphicon-menu-up" ng-click="$ctrl.HighlowChange($index, item, false)"></span> 
-          <span class="btn btn-default glyphicon glyphicon-menu-down" ng-click="$ctrl.HighlowChange($index, item, true)"></span>  
-          <span class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></span>                 
-        </div>        
+        <div class="col-xs-5">
+          <div class="itemName">{{item.name}}</div>
+        </div>              
+        <div class="YWBtn col-xs-6 col-xs-offset-1">
+          <span title="Move up" class="btn btn-default glyphicon glyphicon-menu-up col-xs-3" ng-click="$ctrl.HighlowChange($index, item, false)"></span> 
+          <span title="Move down" class="btn btn-default glyphicon glyphicon-menu-down col-xs-3" ng-click="$ctrl.HighlowChange($index, item, true)"></span>  
+          <span title="Remove" class="btn btn-default glyphicon glyphicon-minus col-xs-6" ng-click="$ctrl.removeExercise($index)"></span>                 
+        </div>
+        <div class="col-xs-12 text-left">
+          <div class="col-xs-3">
+            Sets
+            <input type="number" min="0" class="exeInput" name="nbSets{{$index}}" ng-model="$ctrl.exercisesNew[$index].nbSets">
+          </div>
+          <div class="col-xs-3">
+            Weight
+            <input type="number" min="0" name="exeUnitWeight" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   
+          </div>                                    
+        </div>  
+        <div class="col-xs-12 text-left">
+          <div class="col-sm-6">
+            Time
+            <input type="time" step="1" name="exeUnitTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitTime"> 
+          </div>
+          <div class="col-sm-6">
+            Rest period
+            <input type="time" step="1" name="exeUnitTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitTime">
+          </div>          
+        </div>
+        <div class="col-xs-12">
+          <hr>
+          <div class="col-xs-12 text-center"><strong>Objectives</strong></div>
+          <div class="col-xs-12">            
+            <div class="col-sm-6">
+              Reps
+              <input type="number" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjRep">
+            </div> 
+            <div class="col-sm-6">
+              Time
+              <input type="time" step="1" name="exeObjTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTime">
+            </div>              
+          </div>            
+        </div>
       </li>
     </ul>
     <button class="saveBtn btn btn-default" ng-click="$ctrl.saveProgram()">Save Workout</button>
   </div>
-  <div class="col-sm-4 listExercise text-center">  
+  <div class="col-sm-5 listExercise text-center">  
     <div class=""><h2>Database Exercises</h2></div>
     Categories :
     <select name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
@@ -34,13 +74,14 @@
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
       <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item col-xs-12">
         <div class="YWBtn col-xs-4">
-          <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
-          <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
+          <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
+          <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
         </div>
         <div class="itemName col-xs-7 col-xs-offset-1">{{item.name}}</div>    
       </li>
     </ul>
     <button id="affPlusBtn" class="btn btn-default" ng-click="$ctrl.afficherPlus()">Afficher plus</button>
+  </div>
   </div>
 <exe-detail exe-detail-id="$ctrl.exeDetailId"></exe-detail>
 

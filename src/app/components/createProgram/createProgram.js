@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService) {
+function createProgramController($http, $state, ProgramService, $window) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
   $ctrl.$onInit = function (argument) {
@@ -13,6 +13,7 @@ function createProgramController($http, $state, ProgramService) {
   var missing = false;
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
+    console.log($ctrl.exercisesNew);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
@@ -27,6 +28,7 @@ function createProgramController($http, $state, ProgramService) {
   };
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
+      console.log($ctrl.exercisesNew);
       var programs = ProgramService.getPrograms();
       var newprog = {
         title: $ctrl.programTitle,
@@ -46,26 +48,23 @@ function createProgramController($http, $state, ProgramService) {
   };
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
-    angular.element('#popDetailExe').attr('style', 'display:block;');
+    angular.element('#popDetailExe').css('display', 'block');
   }
   $ctrl.afficherPlus = function () {
-    console.log($ctrl.exercises);
     $ctrl.query = $ctrl.data.next;
     $http.get($ctrl.query + '&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       Array.prototype.push.apply($ctrl.exercises, angular.fromJson(response.data.results));
       if ($ctrl.data.next === null) {
-        angular.element('#affPlusBtn').attr('style', 'display:none;');
+        angular.element('#affPlusBtn').css('display', 'none');
       }
-    });
-    
+    });    
   }  
   $ctrl.changeCat = function () {
-    console.log($ctrl.selectedCat);
     $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
-      angular.element('#affPlusBtn').attr('style', 'display:inline;');
+      angular.element('#affPlusBtn').css('display', 'inline');
     });
   }
 }
