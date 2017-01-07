@@ -4,15 +4,24 @@ html{
 body {	
   background-color: #FFFFFF;
 }
-ul{
+ul li{
 	list-style-type: none;
 }
 div{
 	padding: 3px;
 }
+hr{
+	width: 100%;
+	display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
 .listExercise{
 	min-height: 50px;
-	border : solid 3px; 
 }
 .glyphicon{
 	width: 40px;
@@ -25,6 +34,7 @@ div{
 .glyphicon-menu-up, .glyphicon-menu-down{
 }
 .item{	
+	margin-bottom: 3px;
 }
 .itemName{
 	display: inline-block;
@@ -60,5 +70,5 @@ div{
 	width: 45px;
 }
 .timeInput{
-	width: 90px;
+	width: 100px;
 }
