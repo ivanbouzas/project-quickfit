@@ -34,4 +34,13 @@ ul{
 	background-color: lightgrey;
 	position: fixed;
 	z-index: 999;
+	display: none;
+	padding: 20px;
+}
+.popImg{
+	width: 150px;
+	clear: right;
+}
+.popCross{
+	float: right;
 }

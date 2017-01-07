@@ -26,7 +26,7 @@
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
       <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item">
         <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
-        <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail($index)"></span>    
+        <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>    
         <div class="itemName">{{item.name}}</div>  
       </li>
     </ul>
