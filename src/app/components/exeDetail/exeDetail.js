@@ -23,7 +23,7 @@ function exeDetailController($http) {
           } 
       });
     }
-  }
+  };
 }
 
 angular

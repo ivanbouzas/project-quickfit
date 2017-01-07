@@ -46,9 +46,8 @@ hr{
 .YWBtn{
 	display: inline-block;
 	margin-bottom: 5px;
-
 }
-.popDetailExe{
+.popDetailExe, .popNewExe{
 	min-width: 360px;
 	width: 30%;
 	top: 10%;
@@ -60,7 +59,7 @@ hr{
 	overflow: auto;
 }
 .popImg{
-	width: 150px;
+	width: 100px;
 	clear: right;
 }
 .popCross{

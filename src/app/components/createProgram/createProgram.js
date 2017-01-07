@@ -13,7 +13,6 @@ function createProgramController($http, $state, ProgramService, $window) {
   var missing = false;
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
-    console.log($ctrl.exercisesNew);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
@@ -28,7 +27,6 @@ function createProgramController($http, $state, ProgramService, $window) {
   };
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
-      console.log($ctrl.exercisesNew);
       var programs = ProgramService.getPrograms();
       var newprog = {
         title: $ctrl.programTitle,
@@ -48,7 +46,10 @@ function createProgramController($http, $state, ProgramService, $window) {
   };
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
-    angular.element('#popDetailExe').css('display', 'block');
+    angular.element('#popDetailExe').css('display', 'block');    
+  }
+  $ctrl.createExe = function () {
+    angular.element('#popNewExe').css('display', 'block');
   }
   $ctrl.afficherPlus = function () {
     $ctrl.query = $ctrl.data.next;
@@ -61,12 +62,23 @@ function createProgramController($http, $state, ProgramService, $window) {
     });    
   }  
   $ctrl.changeCat = function () {
-    $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
+    if ($ctrl.selectedCat == 0 || $ctrl.selectedCat == undefined) {
+      angular.element('#affPlusBtn').css('display', 'none');
+      $ctrl.exercises = ProgramService.getOwnExercises();
+    } else {
+      $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
       angular.element('#affPlusBtn').css('display', 'inline');
-    });
-  }
+      });
+    }  
+  };
+  $ctrl.deleteExe = function (index) {
+    if ($window.confirm('Are you sure to delete this exercise ?')) {
+      $ctrl.exercises.splice(index, 1);
+      ProgramService.saveOwnExercises($ctrl.exercises);
+    }    
+  };
 }
 
 angular

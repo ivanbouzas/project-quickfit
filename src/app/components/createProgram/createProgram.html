@@ -81,9 +81,10 @@
     <div class="col-sm-5 listExercise text-center">  
       <div class="col-xs-12">
         <h2>Database Exercises</h2>
-        <div>
+        <button class="saveBtn btn btn-default" ng-click="$ctrl.createExe()">Create New Exercise</button>
+        <div>          
           <strong>Categories</strong>
-          <select name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
+          <select id="catList" name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
             <option ng-repeat="cat in $ctrl.categories track by $index" value="{{cat.id}}">
               {{cat.name}}
             </option>
@@ -92,12 +93,14 @@
             </option>
          </select>
         </div>
+
       </div>          
       <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
         <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item col-xs-12">
           <div class="YWBtn col-xs-4">
             <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
             <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
+            <span title="Detail" class="btn btn-default glyphicon glyphicon-trash" ng-click="$ctrl.deleteExe(item.id)" ng-hide="$ctrl.selectedCat != 0"></span>
           </div>
           <div class="itemName col-xs-7 col-xs-offset-1">{{item.name}}</div>    
         </li>
@@ -106,5 +109,6 @@
     </div>
   </div>
 <exe-detail exe-detail-id="$ctrl.exeDetailId"></exe-detail>
+<exe-new on-save="$ctrl.changeCat()"></exe-new>
 
 </div> 
