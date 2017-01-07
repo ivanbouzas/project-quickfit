@@ -1,5 +1,5 @@
 function exeDetailController($http) {
-  $ctrl = this;
+  var $ctrl = this;
   $ctrl.close = function () {
     angular.element('#popDetailExe').attr('style', 'display:none;');
   };
@@ -14,7 +14,6 @@ function exeDetailController($http) {
       });  
       $http.get('https://wger.de/api/v2/exerciseimage/?exercise='+ $ctrl.exeDetailId +'&format=json').then(function (response) {        
           if (response.data.count == 0) {
-            $ctrl.noImages = true;
             $ctrl.image1 = null;
             $ctrl.image2 = null;
           } else {

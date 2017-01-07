@@ -1,9 +1,15 @@
 function createProgramController($http, $state, ProgramService) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
-    $ctrl.exercises = angular.fromJson(response.data.results);
-  });
+  $ctrl.$onInit = function (argument) {
+    $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
+      $ctrl.data = angular.fromJson(response.data);
+      $ctrl.exercises = angular.fromJson(response.data.results);
+    });
+    $http.get('https://wger.de/api/v2/exercisecategory/?format=json').then(function (response) {
+      $ctrl.categories = angular.fromJson(response.data.results);
+    });
+  }
   var missing = false;
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
@@ -41,6 +47,26 @@ function createProgramController($http, $state, ProgramService) {
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
     angular.element('#popDetailExe').attr('style', 'display:block;');
+  }
+  $ctrl.afficherPlus = function () {
+    console.log($ctrl.exercises);
+    $ctrl.query = $ctrl.data.next;
+    $http.get($ctrl.query + '&format=json').then(function (response) {
+      $ctrl.data = angular.fromJson(response.data);
+      Array.prototype.push.apply($ctrl.exercises, angular.fromJson(response.data.results));
+      if ($ctrl.data.next === null) {
+        angular.element('#affPlusBtn').attr('style', 'display:none;');
+      }
+    });
+    
+  }  
+  $ctrl.changeCat = function () {
+    console.log($ctrl.selectedCat);
+    $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
+      $ctrl.data = angular.fromJson(response.data);
+      $ctrl.exercises = angular.fromJson(response.data.results);
+      angular.element('#affPlusBtn').attr('style', 'display:inline;');
+    });
   }
 }
 

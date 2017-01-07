@@ -1,17 +1,17 @@
 <div class="component">
-  <div class="col-sm-12 col-sm-offset-4">
-    <h2>Title : 
+
+  <div class="col-sm-12">
+    <h1 class="col-xs-12 text-center">Create Your Workout</h1>
+    <h2 class="col-xs-12 text-center">Title : 
     <input id="progTitle" ng-model="$ctrl.programTitle" type="textbox" name="title" />
     </h2>
   </div>
-  
-  
-  <div class="col-sm-4 col-sm-offset-2 listExercise">
-  <div class=""><h2>Your Workout</h2></div>
+  <div class="col-sm-4 col-sm-offset-2 listExercise text-center">
+    <div class=""><h2>Your Workout</h2></div>
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
       <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item col-xs-12">
-        <div class="itemName col-xs-3">{{item.name}}</div>        
-        <div class="YWBtn col-xs-3 col-xs-offset-6">
+        <div class="itemName col-xs-5">{{item.name}}</div>        
+        <div class="YWBtn col-xs-3 col-xs-offset-4">
           <span class="btn btn-default glyphicon glyphicon-menu-up" ng-click="$ctrl.HighlowChange($index, item, false)"></span> 
           <span class="btn btn-default glyphicon glyphicon-menu-down" ng-click="$ctrl.HighlowChange($index, item, true)"></span>  
           <span class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></span>                 
@@ -20,16 +20,27 @@
     </ul>
     <button class="saveBtn btn btn-default" ng-click="$ctrl.saveProgram()">Save Workout</button>
   </div>
-  <div class="col-sm-4 listExercise">  
-  <div class=""><h2>Database Exercises</h2></div>
-    <input type="" name="">  
+  <div class="col-sm-4 listExercise text-center">  
+    <div class=""><h2>Database Exercises</h2></div>
+    Categories :
+    <select name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
+      <option ng-repeat="cat in $ctrl.categories track by $index" value="{{cat.id}}">
+        {{cat.name}}
+      </option>
+      <option value="0">
+        Own Exercises
+      </option>
+    </select>
     <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
-      <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item">
-        <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
-        <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>    
-        <div class="itemName">{{item.name}}</div>  
+      <li ng-repeat="item in $ctrl.exercises track by $index" class="item list-group-item col-xs-12">
+        <div class="YWBtn col-xs-4">
+          <span class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise(item)"></span> 
+          <span class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
+        </div>
+        <div class="itemName col-xs-7 col-xs-offset-1">{{item.name}}</div>    
       </li>
     </ul>
+    <button id="affPlusBtn" class="btn btn-default" ng-click="$ctrl.afficherPlus()">Afficher plus</button>
   </div>
 <exe-detail exe-detail-id="$ctrl.exeDetailId"></exe-detail>
 

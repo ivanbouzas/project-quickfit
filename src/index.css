@@ -1,4 +1,7 @@
-body {
+html{
+	margin-bottom: 150px;
+}
+body {	
   background-color: #FFFFFF;
 }
 ul{
@@ -29,6 +32,7 @@ ul{
 	display: inline-block;
 }
 .popDetailExe{
+	min-width: 300px;
 	top: 25%;
 	width: 33%;
 	background-color: lightgrey;
