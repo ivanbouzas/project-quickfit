@@ -4,12 +4,15 @@ function exeNewController(ProgramService) {
     angular.element('#popNewExe').attr('style', 'display:none;');
     angular.element('#newExeName').attr('style', 'border:solid 0px red;');
     angular.element('#newExeName').next().html('');
-    $ctrl.exercise.name = "";
+    $ctrl.exercise = {name : ""};
+    $ctrl.exercise = {description :""};
   };
   $ctrl.savePersoExe = function () {  
   	if (angular.isDefined($ctrl.exercise.name) && $ctrl.exercise.name !== "") {
   		var exercises = ProgramService.getOwnExercises();
+  		console.log(exercises);
   		$ctrl.exercise.category = 'Own Exercise';
+  		$ctrl.exercise.id = exercises[0] == undefined ? 0 : exercises[exercises.length - 1].id + 1;
   		exercises.push($ctrl.exercise);	
   		ProgramService.saveOwnExercises(exercises);
   		$ctrl.close();

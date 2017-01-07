@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService, $window) {
+function createProgramController($http, $state, ProgramService, $window, $filter) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
   $ctrl.$onInit = function (argument) {
@@ -9,6 +9,7 @@ function createProgramController($http, $state, ProgramService, $window) {
     $http.get('https://wger.de/api/v2/exercisecategory/?format=json').then(function (response) {
       $ctrl.categories = angular.fromJson(response.data.results);
     });
+    $ctrl.activeDelete = true;
   }
   var missing = false;
   $ctrl.selectExercise = function (item) {
@@ -65,19 +66,22 @@ function createProgramController($http, $state, ProgramService, $window) {
     if ($ctrl.selectedCat == 0 || $ctrl.selectedCat == undefined) {
       angular.element('#affPlusBtn').css('display', 'none');
       $ctrl.exercises = ProgramService.getOwnExercises();
+      $ctrl.activeDelete = false;
     } else {
       $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
       angular.element('#affPlusBtn').css('display', 'inline');
+      $ctrl.activeDelete = true;
       });
     }  
   };
   $ctrl.deleteExe = function (index) {
+    console.log($ctrl.exercises, index);
     if ($window.confirm('Are you sure to delete this exercise ?')) {
       $ctrl.exercises.splice(index, 1);
       ProgramService.saveOwnExercises($ctrl.exercises);
-    }    
+    }
   };
 }
 
