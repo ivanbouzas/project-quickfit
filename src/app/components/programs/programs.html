@@ -1,8 +1,16 @@
 <div class="component">
-  <button ui-sref="createProgram">Create new program</button>
-  <ul>
-  	<li ng-repeat="e in $ctrl.programs track by $index">
-	  <a ui-sref="program({id:$index})">{{ e.title }}</a>     	  
-  	</li>
-  </ul>  
+  <div class="col-xs-12">
+    <div class="col-xs-12 text-center">
+      <button ui-sref="createProgram">Create new program</button>  
+    </div>
+    <div class="col-xs-12 text-center">
+      <ul class="list-group">
+        <li ng-repeat="e in $ctrl.programs track by $index" class="">
+          <a ui-sref="program({id:$index})">{{ e.title }}</a>         
+        </li>
+      </ul>  
+    </div>
+     
+  </div>
+   
 </div>

@@ -29,6 +29,7 @@ function createProgramController($http, $state, ProgramService, $window, $filter
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
       var programs = ProgramService.getPrograms();
+
       var newprog = {
         title: $ctrl.programTitle,
         exercises: $ctrl.exercisesNew
@@ -36,11 +37,13 @@ function createProgramController($http, $state, ProgramService, $window, $filter
       programs.push(newprog);
       ProgramService.savePrograms(programs);
     } else {
-      if (!missing) {
+      if (!missing) {        
         angular.element('#progTitle').attr('style', 'border:solid 2px red;');
         angular.element('#progTitle').after('<strong style="color:red;">Missing Title</strong>');
-        missing = true;
+        missing = true;        
       }
+      $window.alert('Missing Title !');
+      angular.element('html, body').animate({ scrollTop: 0 }, 'fast');
       return;
     }
     $state.go('programs');

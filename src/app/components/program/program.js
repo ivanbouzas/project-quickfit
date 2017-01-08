@@ -1,5 +1,17 @@
-function programController() {
-  this.text = 'My brand new component!';
+function programController(ProgramService, $stateParams) {
+  var $ctrl = this;
+  $ctrl.program = ProgramService.getPrograms()[$stateParams.id];
+  var doneExercises = [];
+  console.log($ctrl.program);
+  $ctrl.nextSet = function (index, exercise) {   
+  	exercise.reps = $ctrl.reps; 	
+  	doneExercises.push(exercise);
+  	if ($ctrl.program.exercises[index].nbSets == 1) {
+  		$ctrl.program.exercises.splice(index, 1);
+  	} else {
+  		$ctrl.program.exercises[index].nbSets = $ctrl.program.exercises[index].nbSets - 1;
+  	}
+  }
 }
 
 angular
