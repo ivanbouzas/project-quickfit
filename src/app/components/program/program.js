@@ -48,27 +48,26 @@ function programController(ProgramService, $stateParams, $state) {
           }
         }
         if (angular.isDefined(value.exeObjRep)) {
-          if (doneExercises[key].reps > value.exeObjRep) {
+          if (doneExercises[key].reps >= value.exeObjRep) {
             doneExercises[key].exeUnitWeight += doneExercises[key].exeObjWeightInc;
-            $ctrl.resumeClass[key] = 'better';
+            $ctrl.resumeClass[key] = 'better objective';
           }
         }
         if (angular.isDefined(value.exeObjTime)) {
           if (value.exeObjTimeType === 'plus') {
-            if (doneExercises[key].time > value.exeObjTime) {
+            if (doneExercises[key].time >= value.exeObjTime) {
               doneExercises[key].exeObjTime += doneExercises[key].exeObjTimeInc;
-              $ctrl.resumeClass[key] = 'better';
+              $ctrl.resumeClass[key] = 'better objective';
             }
           } else if (value.exeObjTimeType === 'minus') {
-            if (doneExercises[key].time < value.exeObjTime) {
+            if (doneExercises[key].time <= value.exeObjTime) {
               doneExercises[key].exeObjTime += doneExercises[key].exeObjTimeInc;
-              $ctrl.resumeClass[key] = 'better';
+              $ctrl.resumeClass[key] = 'better objective';
             }
           }
         }
       });
       $ctrl.program.exercises = doneExercises;
-      console.log(doneExercises);
     }
   };
   $ctrl.saveCompletedProg = function () {
