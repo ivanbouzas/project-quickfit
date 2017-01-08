@@ -71,3 +71,15 @@ hr{
 .timeInput{
 	width: 100px;
 }
+.better, .same, .worse{
+	border: solid 3px;
+}
+.better{
+	border-color: green;
+}
+.same{
+	border-color: lightgrey;
+}
+.worse{
+	border-color: yellow;
+}

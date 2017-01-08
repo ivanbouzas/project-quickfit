@@ -10,17 +10,22 @@ function ProgramService() {
     return programs;
   };
   this.savePrograms = function (pPrograms) {
-    localStorage.setItem(pKey, angular.toJson(pPrograms));  
+    localStorage.setItem(pKey, angular.toJson(pPrograms));
+  };
+  this.saveProgramById = function (pProgram, id) {
+    programs = this.getPrograms();
+    programs[id] = pProgram;
+    this.savePrograms(programs);
   };
   this.getOwnExercises = function () {
-    if (angular.fromJson(localStorage.getItem(pKeyPerso)) != null) {
+    if (angular.fromJson(localStorage.getItem(pKeyPerso)) !== null) {
       OwnExercises = angular.fromJson(localStorage.getItem(pKeyPerso));
     }
     return OwnExercises;
-  }
-  this.saveOwnExercises = function (pPrograms) {
-    localStorage.setItem(pKeyPerso, angular.toJson(pPrograms));  
-  };  
+  };
+  this.saveOwnExercises = function (pOwnExercises) {
+    localStorage.setItem(pKeyPerso, angular.toJson(pOwnExercises));
+  };
 }
 
 angular

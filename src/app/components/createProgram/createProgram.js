@@ -1,7 +1,7 @@
-function createProgramController($http, $state, ProgramService, $window, $filter) {
+function createProgramController($http, $state, ProgramService, $window, $anchorScroll, $location) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function (argument) {
+  $ctrl.$onInit = function () {
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -10,8 +10,7 @@ function createProgramController($http, $state, ProgramService, $window, $filter
       $ctrl.categories = angular.fromJson(response.data.results);
     });
     $ctrl.activeDelete = true;
-  }
-  var missing = false;
+  };
   $ctrl.selectExercise = function (item) {
     $ctrl.exercisesNew.push(item);
   };
@@ -24,25 +23,35 @@ function createProgramController($http, $state, ProgramService, $window, $filter
       $ctrl.exercisesNew.splice(index + 1, 0, item);
     } else {
       $ctrl.exercisesNew.splice(index - 1, 0, item);
-    }      
+    }
   };
   $ctrl.saveProgram = function () {
-    var programs = ProgramService.getPrograms();
-    var newprog = {
-      title: $ctrl.programTitle,
-      exercises: $ctrl.exercisesNew
-    };
-    programs.push(newprog);
-    ProgramService.savePrograms(programs);
-    $state.go('programs');
+    if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
+      var programs = ProgramService.getPrograms();
+      var newprog = {
+        title: $ctrl.programTitle,
+        exercises: $ctrl.exercisesNew
+      };
+      programs.push(newprog);
+      ProgramService.savePrograms(programs);
+      $state.go('programs');
+    } else {
+      if (angular.isUndefined($ctrl.missingTitle)) {
+        angular.element('#progTitle').css('border', 'solid 3px red');
+        angular.element('#progTitle').after('<span style="color:red;"> Missing Title</span>');
+        $ctrl.missingTitle = true;
+      }
+      $location.hash('progTitle');
+      $anchorScroll();
+    }
   };
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
-    angular.element('#popDetailExe').css('display', 'block');    
-  }
+    angular.element('#popDetailExe').css('display', 'block');
+  };
   $ctrl.createExe = function () {
     angular.element('#popNewExe').css('display', 'block');
-  }
+  };
   $ctrl.afficherPlus = function () {
     $ctrl.query = $ctrl.data.next;
     $http.get($ctrl.query + '&format=json').then(function (response) {
@@ -51,24 +60,23 @@ function createProgramController($http, $state, ProgramService, $window, $filter
       if ($ctrl.data.next === null) {
         angular.element('#affPlusBtn').css('display', 'none');
       }
-    });    
-  }  
+    });
+  };
   $ctrl.changeCat = function () {
-    if ($ctrl.selectedCat == 0 || $ctrl.selectedCat == undefined) {
+    if ($ctrl.selectedCat === 0 || angular.isUndefined($ctrl.selectedCat)) {
       angular.element('#affPlusBtn').css('display', 'none');
       $ctrl.exercises = ProgramService.getOwnExercises();
       $ctrl.activeDelete = false;
     } else {
       $http.get('https://wger.de/api/v2/exercise/?category=' + $ctrl.selectedCat + '&language=2&format=json').then(function (response) {
-      $ctrl.data = angular.fromJson(response.data);
-      $ctrl.exercises = angular.fromJson(response.data.results);
-      angular.element('#affPlusBtn').css('display', 'inline');
-      $ctrl.activeDelete = true;
+        $ctrl.data = angular.fromJson(response.data);
+        $ctrl.exercises = angular.fromJson(response.data.results);
+        angular.element('#affPlusBtn').css('display', 'inline');
+        $ctrl.activeDelete = true;
       });
-    }  
+    }
   };
   $ctrl.deleteExe = function (index) {
-    console.log($ctrl.exercises, index);
     if ($window.confirm('Are you sure to delete this exercise ?')) {
       $ctrl.exercises.splice(index, 1);
       ProgramService.saveOwnExercises($ctrl.exercises);
