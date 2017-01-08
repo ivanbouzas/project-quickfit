@@ -1,10 +1,10 @@
-function programController(ProgramService, $stateParams) {
+function programController(ProgramService, $stateParams, $filter) {
   var $ctrl = this;
   $ctrl.program = ProgramService.getPrograms()[$stateParams.id];
   var doneExercises = [];
   console.log($ctrl.program);
   $ctrl.nextSet = function (index, exercise) {   
-  	exercise.reps = $ctrl.reps; 	
+  	exercise.reps = $ctrl.reps;	
   	doneExercises.push(exercise);
   	if ($ctrl.program.exercises[index].nbSets == 1) {
   		$ctrl.program.exercises.splice(index, 1);

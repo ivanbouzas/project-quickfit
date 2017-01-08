@@ -8,12 +8,16 @@
             <div class="itemName col-sm-2"><strong>{{item.name}}</strong></div>
             <div class="col-sm-1">Sets left {{item.nbSets}}</div>
             <div class="col-sm-1">Weight {{item.exeUnitWeight}}</div>
-            <div class="col-sm-2">Time {{item.exeUnitTime | date : 'HH:mm:ss'}}</div>            
+            <div class="col-sm-1">Time {{item.exeUnitTime | date : 'HH:mm:ss'}}</div>
             <div class="col-sm-1" ng-hide="$index != 0">
               Reps
-              <input type="number" class="exeInput" min="0" ng-model="$ctrl.reps" name="Reps" >
+              <input type="number" class="exeInput" min="0" ng-model="$ctrl.program.exercises[$index].reps" name="Reps" >
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2" ng-hide="$index != 0">
+              Time
+              <input type="time" step="1" class="exeInput timeInput" ng-model="$ctrl.program.exercises[$index].time" name="Time" >
+            </div>
+            <div class="col-sm-2">
               Rest period {{item.exeUnitRest | date : 'HH:mm:ss'}}
             </div>
             <div class="col-sm-2" ng-hide="$index != 0">

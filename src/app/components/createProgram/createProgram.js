@@ -29,7 +29,6 @@ function createProgramController($http, $state, ProgramService, $window, $filter
   $ctrl.saveProgram = function () {
     if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
       var programs = ProgramService.getPrograms();
-
       var newprog = {
         title: $ctrl.programTitle,
         exercises: $ctrl.exercisesNew
