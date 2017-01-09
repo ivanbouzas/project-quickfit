@@ -63,7 +63,7 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
     });
   };
   $ctrl.changeCat = function () {
-    if ($ctrl.selectedCat === 0 || angular.isUndefined($ctrl.selectedCat)) {
+    if (parseInt($ctrl.selectedCat, 10) === 0 || angular.isUndefined($ctrl.selectedCat)) {
       angular.element('#affPlusBtn').css('display', 'none');
       $ctrl.exercises = ProgramService.getOwnExercises();
       $ctrl.activeDelete = false;

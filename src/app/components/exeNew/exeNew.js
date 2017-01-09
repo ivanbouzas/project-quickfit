@@ -1,5 +1,8 @@
 function exeNewController(ProgramService) {
   var $ctrl = this;
+  $ctrl.$onInit = function () {
+    $ctrl.exercise = {};
+  };
   $ctrl.close = function () {
     angular.element('#popNewExe').attr('style', 'display:none;');
     angular.element('#newExeName').attr('style', 'border:solid 0px red;');
