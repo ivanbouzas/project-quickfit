@@ -51,12 +51,14 @@ hr{
 	min-width: 360px;
 	width: 30%;
 	top: 10%;
-	background-color: lightgrey;
+	background-color: #f2f2f2;
+	border : solid 10px #99ccff;
 	position: fixed;
 	z-index: 999;
 	display: none;
 	padding: 20px;
 	overflow: auto;
+	border-radius: 40px;
 }
 .popImg{
 	width: 100px;
@@ -85,4 +87,7 @@ hr{
 }
 .objectiveTxt{
 	color: green;
+}
+.workoutTitle{
+	
 }
