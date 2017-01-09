@@ -4,12 +4,28 @@ angular
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
+  $locationProvider.html5Mode(false).hashPrefix('!');
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
+    .state('home', {
       url: '/',
-      component: 'app'
+      component: 'home'
+    })
+    .state('programs', {
+      url: '/programs',
+      component: 'programs'
+    })
+    .state('program', {
+      url: '/program/:id',
+      component: 'program'
+    })
+    .state('createProgram', {
+      url: '/createProgram',
+      component: 'createProgram'
+    })
+    .state('calendarmain', {
+      url: '/calendarmain',
+      component: 'calendarmain'
     });
 }

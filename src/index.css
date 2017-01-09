@@ -1,1 +1,92 @@
+<<<<<<< HEAD
 
+=======
+html{
+	margin-bottom: 150px;
+}
+body {	
+  background-color: #FFFFFF;
+}
+ul li{
+	list-style-type: none;
+}
+div{
+	padding: 3px;
+}
+hr{
+	width: 100%;
+	display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+.listExercise{
+	min-height: 50px;
+}
+.glyphicon{
+	width: 40px;
+	float: right;
+}
+.glyphicon-plus{
+}
+.glyphicon-minus{
+}
+.glyphicon-menu-up, .glyphicon-menu-down{
+}
+.item{	
+	margin-bottom: 3px;
+}
+.itemName{
+	display: inline-block;
+}
+.saveBtn{
+	width: 150px;
+	margin-bottom: 10px;
+}
+.YWBtn{
+	display: inline-block;
+	margin-bottom: 5px;
+}
+.popDetailExe, .popNewExe{
+	min-width: 360px;
+	width: 30%;
+	top: 10%;
+	background-color: lightgrey;
+	position: fixed;
+	z-index: 999;
+	display: none;
+	padding: 20px;
+	overflow: auto;
+}
+.popImg{
+	width: 100px;
+	clear: right;
+}
+.popCross{
+	float: right;
+}
+.exeInput{
+	width: 45px;
+}
+.timeInput{
+	width: 100px;
+}
+.better, .same, .worse{
+	border: solid 3px;
+}
+.better{
+	border-color: green;
+}
+.same{
+	border-color: lightgrey;
+}
+.worse{
+	border-color: yellow;
+}
+.objectiveTxt{
+	color: green;
+}
+>>>>>>> 331253d5343944682d3426b8bd085acee8fac7d2

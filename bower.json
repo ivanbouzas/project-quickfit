@@ -2,11 +2,14 @@
   "name": "fountain-inject",
   "version": "0.0.1",
   "dependencies": {
+    "jquery": ">=1.10",
     "angular": "^1.5.0",
     "angular-ui-router": "1.0.0-beta.1",
     "bootstrap": "^3.3.7",
     "bootswatch": "^3.3.7",
-    "ng-sortable": "^1.3.7"
+    "ng-sortable": "^1.3.7",
+    "angular-ui-sortable": "^0.16.1",
+    "angular-sanitize": "^1.6.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"
