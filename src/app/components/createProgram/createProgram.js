@@ -12,7 +12,8 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
     $ctrl.activeDelete = true;
   };
   $ctrl.selectExercise = function (item) {
-    $ctrl.exercisesNew.push(item);
+    item.showObjectives = false;
+    $ctrl.exercisesNew.push(angular.copy(item));
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
@@ -81,6 +82,9 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
       $ctrl.exercises.splice(index, 1);
       ProgramService.saveOwnExercises($ctrl.exercises);
     }
+  };
+  $ctrl.showObjectives = function (index) {
+    $ctrl.exercisesNew[index].showObjectives = !$ctrl.exercisesNew[index].showObjectives;
   };
 }
 
