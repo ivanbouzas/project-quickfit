@@ -56,19 +56,21 @@ hr{
 	min-width: 360px;
 	top: 10%;
 	background-color: #FFFFFF;
-	border : solid 3px #f2f2f2;
+	border : solid 1px #000;
 	position: fixed;
 	z-index: 999;
 	display: none;
 	padding: 20px;
 	z-index: 3;
+    height: 60%;
 }
 .popImg{
 	width: 100px;
 	clear: right;
 }
 .popCross{
-	float: right;
+	padding: 3px;
+	border:solid 1px;
 }
 .exeInput{
 	width: 45px;
@@ -111,4 +113,8 @@ hr{
     padding: 20px;
     top: -5px;
     left: -5px;
+}
+.popScroll{
+	height: 90%;
+	overflow: auto;
 }

@@ -19,7 +19,7 @@ function exeDetailController($http, $filter, ProgramService) {
           $http.get('https://wger.de/api/v2/exercisecategory/' + $ctrl.exercise.category + '/?language=2&format=json').then(function (response) {
             $ctrl.category = angular.fromJson(response.data);
           });
-          angular.element('#descExe').html('<strong>Description</strong>' + $ctrl.exercise.description);
+          angular.element('#descExe').html($ctrl.exercise.description);
         });
         $http.get('https://wger.de/api/v2/exerciseimage/?exercise=' + $ctrl.exeDetailId + '&format=json').then(function (response) {
           if (response.data.count === 0) {

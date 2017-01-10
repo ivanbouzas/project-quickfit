@@ -1,10 +1,23 @@
 <div class="component">
-  <div id="popDetailExe" class="popDetailExe col-sm-4 col-sm-offset-4">
-    <button title="Close" ng-click="$ctrl.close()" class="popCross glyphicon glyphicon-remove"></button>
-    <img class="popImg" src="{{$ctrl.image1}}">
-    <img class="popImg" src="{{$ctrl.image2}}">
-    <div class="poplgn"><strong>Exercise Name</strong> {{$ctrl.exercise.name}}</div>
-    <div class="poplgn"><strong>Category</strong> {{$ctrl.category.name}}</div>
-    <div id="descExe" class="poplgn"></div>           
+  <div id="popDetailExe" class="popDetailExe col-sm-4 col-sm-offset-4">  
+    <div class="col-xs-1 col-xs-offset-11"><button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove"></button></div>
+    <div class="popScroll">
+    <div class="col-xs-12">
+      <img class="popImg" src="{{$ctrl.image1}}" ng-show="$ctrl.image1">
+      <img class="popImg" src="{{$ctrl.image2}}" ng-show="$ctrl.image2">
+    </div>
+    <div class="poplgn col-xs-12">
+      <div class="col-sm-3"><strong>Exercise Name</strong></div> 
+      <div class="col-sm-8 col-sm-offset-1">{{$ctrl.exercise.name}}</div>
+    </div>
+    <div class="poplgn col-xs-12">
+      <div class="col-sm-3"><strong>Category</strong></div> 
+      <div class="col-sm-8 col-sm-offset-1">{{$ctrl.category.name}}</div>
+    </div>
+    <div class="poplgn col-xs-12">
+      <div class="col-sm-3"><strong>Description</strong></div> 
+    </div>
+    <div id="descExe" class="poplgn col-xs-12"></div>              
+  </div>
   </div>
 </div>

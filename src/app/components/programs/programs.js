@@ -5,8 +5,10 @@ function programsController(ProgramService) {
     stop: function() { ProgramService.savePrograms($ctrl.programs); }
   };
   $ctrl.deleteProgram = function (index) {
-  	$ctrl.programs.splice(index, 1);
-  	ProgramService.savePrograms($ctrl.programs);
+    if ($window.confirm('Are you sure to delete this exercise ?')) {
+      $ctrl.programs.splice(index, 1);
+      ProgramService.savePrograms($ctrl.programs);
+    }    
   }
 }
 

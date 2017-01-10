@@ -1,6 +1,7 @@
 <div class="component">
   <div id="popNewExe" class="popNewExe col-sm-4 col-sm-offset-4">
-    <button title="Close" ng-click="$ctrl.close()" class="popCross glyphicon glyphicon-remove"></button>
+  <div class="popScroll">
+    <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove"></button>
     <div class="poplgn">
     	<strong>Exercise Name</strong> 
     	<input id="newExeName" type="textbox" ng-model="$ctrl.exercise.name" name="exeName" required="required">
@@ -8,5 +9,6 @@
     <div class="poplgn"><strong>Category</strong> Own Exercise</div>
     <div class="poplgn"><strong>Description<br></strong><textarea cols="40" rows="10" ng-model="$ctrl.exercise.description"></textarea></div> 
     <button class="saveBtn btn btn-default" ng-click="$ctrl.savePersoExe()">Save new exercise</button>         
+  </div>
   </div>
 </div>
