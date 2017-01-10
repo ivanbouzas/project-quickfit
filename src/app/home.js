@@ -3,5 +3,6 @@ angular
   .component('home', {
     templateUrl: 'app/home.html',
     controller: function () {
+    	
     }
   });
