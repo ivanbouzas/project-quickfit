@@ -64,6 +64,10 @@ hr{
 	z-index: 3;
     height: 60%;
 }
+.popNewExe{
+	height: 80%;
+	max-height: 450px;
+}
 .popImg{
 	width: 100px;
 	clear: right;
