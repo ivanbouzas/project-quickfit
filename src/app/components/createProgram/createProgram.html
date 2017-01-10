@@ -9,9 +9,11 @@
         </h2>          
     </div>  
   </div>
-  <div class="col-xs-12"> 
+  <div class="col-xs-12">     
     <form name="formCtrl" ng-submit="$ctrl.saveProgram()">
+
     <div class="col-sm-5 col-sm-offset-1 listExercise text-center">
+      <hr>
       <div class="col-xs-12"><h2>Your Workout</h2></div>
       <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group col-xs-12">
         <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item col-xs-12" ng-class="'orderId'+$index">
@@ -84,8 +86,9 @@
       <input type="submit" class="saveBtn btn btn-default" value="Save Workout">
     </div>
     </form>
-    <div class="col-sm-5 listExercise text-center">  
-      <div class="col-xs-12">
+    <div class="col-sm-5 listExercise text-center"> 
+      <hr>
+      <div class="col-xs-12">        
         <h2>Database Exercises</h2>
         <button class="saveBtn btn btn-default" ng-click="$ctrl.createExe()">Create New Exercise</button>
         <div>          
