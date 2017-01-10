@@ -4,6 +4,10 @@ function programsController(ProgramService) {
   $ctrl.sortableOptions = {
     stop: function() { ProgramService.savePrograms($ctrl.programs); }
   };
+  $ctrl.deleteProgram = function (index) {
+  	$ctrl.programs.splice(index, 1);
+  	ProgramService.savePrograms($ctrl.programs);
+  }
 }
 
 angular

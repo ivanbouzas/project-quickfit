@@ -1,7 +1,7 @@
-function createProgramController($http, $state, ProgramService, $window, $anchorScroll, $location) {
+function createProgramController($http, $state, ProgramService, $window, $anchorScroll, $location, $stateParams) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {
+  $ctrl.$onInit = function () {    
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -9,6 +9,11 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
     $http.get('https://wger.de/api/v2/exercisecategory/?format=json').then(function (response) {
       $ctrl.categories = angular.fromJson(response.data.results);
     });
+    if (angular.isDefined($stateParams.id)) {
+      $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
+      $ctrl.programTitle = $ctrl.oldProgram.title;
+      $ctrl.exercisesNew = $ctrl.oldProgram.exercises;
+    }
     $ctrl.activeDelete = true;
     $ctrl.overBody = false;
   };
@@ -34,7 +39,11 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
         title: $ctrl.programTitle,
         exercises: $ctrl.exercisesNew
       };
-      programs.push(newprog);
+      if (angular.isDefined($ctrl.oldProgram)) {
+        programs[$stateParams.id] = newprog;
+      } else {
+        programs.push(newprog);
+      }      
       ProgramService.savePrograms(programs);
       $state.go('programs');
     } else {
