@@ -56,17 +56,14 @@ hr{
 	min-width: 360px;
 	top: 10%;
 	background-color: #FFFFFF;
-	border : solid 1px #000;
 	position: fixed;
 	z-index: 999;
 	display: none;
 	padding: 20px;
 	z-index: 3;
-    height: 50%;
-}
-.popNewExe{
-	height: 80%;
-	max-height: 450px;
+    height: 80%;
+    box-shadow: 0 4px 8px 0;
+    max-height: 425px;
 }
 .popImg{
 	width: 100px;
