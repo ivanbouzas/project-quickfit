@@ -1,4 +1,4 @@
-function exeNewController(ProgramService) {
+function exeNewController(ProgramService, $q) {
   var $ctrl = this;
   $ctrl.$onInit = function () {
     $ctrl.exercise = {};
@@ -19,8 +19,7 @@ function exeNewController(ProgramService) {
       exercises.push($ctrl.exercise);
       ProgramService.saveOwnExercises(exercises);
       $ctrl.close();
-      $ctrl.onSave();
-      $ctrl.overBody();
+      $q($ctrl.onSave).then($ctrl.overBody);
     } else {
       angular.element('#newExeName').attr('style', 'border:solid 2px red;');
       angular.element('#newExeName').after('<strong style="color:red;">Missing Title</strong>');
