@@ -2,6 +2,7 @@ function exeDetailController($http, $filter, ProgramService) {
   var $ctrl = this;
   $ctrl.close = function () {
     angular.element('#popDetailExe').attr('style', 'display:none;');
+    $ctrl.overBody();
   };
   $ctrl.$onChanges = function () {
     if (angular.isDefined($ctrl.exeDetailId)) {
@@ -42,7 +43,8 @@ angular
     controller: exeDetailController,
     bindings: {
       exeDetailId: '<',
-      ownExe: '<'
+      ownExe: '<',
+      overBody: '&'
     }
   });
 

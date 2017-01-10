@@ -10,6 +10,7 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
       $ctrl.categories = angular.fromJson(response.data.results);
     });
     $ctrl.activeDelete = true;
+    $ctrl.overBody = false;
   };
   $ctrl.selectExercise = function (item) {
     item.showObjectives = false;
@@ -49,9 +50,11 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
     angular.element('#popDetailExe').css('display', 'block');
+    $ctrl.showHideOverBody();
   };
   $ctrl.createExe = function () {
     angular.element('#popNewExe').css('display', 'block');
+    $ctrl.showHideOverBody();
   };
   $ctrl.afficherPlus = function () {
     $ctrl.query = $ctrl.data.next;
@@ -86,6 +89,9 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
   $ctrl.showObjectives = function (index) {
     $ctrl.exercisesNew[index].showObjectives = !$ctrl.exercisesNew[index].showObjectives;
   };
+  $ctrl.showHideOverBody = function () {
+    $ctrl.overBody = !$ctrl.overBody;
+  }
 }
 
 angular

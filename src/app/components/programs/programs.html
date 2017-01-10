@@ -5,9 +5,9 @@
     </div>
     <div class="col-sm-12 text-center">
       <ul ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.programs" class="list-group">
-        <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item col-sm-6 col-sm-offset-3">
-          <span class="workoutTitle">{{ e.title }}</span>
-          <button ui-sref="program({id:$index})" class="btn btn-default">Start Workout</button>         
+        <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item col-sm-6 col-sm-offset-3 text-center">
+          <div class="workoutTitle col-sm-3">{{ e.title }}</div>
+          <button ui-sref="program({id:$index})" class="btn btn-default col-sm-3">Start Workout</button>         
         </li>
       </ul>  
     </div>     
