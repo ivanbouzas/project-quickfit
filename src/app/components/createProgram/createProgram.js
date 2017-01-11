@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService, $window, $anchorScroll, $location, $stateParams) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
   $ctrl.$onInit = function () {    
@@ -33,28 +33,18 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
     }
   };
   $ctrl.saveProgram = function () {
-    if (angular.isDefined($ctrl.programTitle) && $ctrl.programTitle !== "") {
-      var programs = ProgramService.getPrograms();
-      var newprog = {
-        title: $ctrl.programTitle,
-        exercises: $ctrl.exercisesNew
-      };
-      if (angular.isDefined($ctrl.oldProgram)) {
-        programs[$stateParams.id] = newprog;
-      } else {
-        programs.push(newprog);
-      }      
-      ProgramService.savePrograms(programs);
-      $state.go('programs');
+    var programs = ProgramService.getPrograms();
+    var newprog = {
+      title: $ctrl.programTitle,
+      exercises: $ctrl.exercisesNew
+    };
+    if (angular.isDefined($ctrl.oldProgram)) {
+      programs[$stateParams.id] = newprog;
     } else {
-      if (angular.isUndefined($ctrl.missingTitle)) {
-        angular.element('#progTitle').css('border', 'solid 3px red');
-        angular.element('#progTitle').after('<span style="color:red;"> Missing Title</span>');
-        $ctrl.missingTitle = true;
-      }
-      $location.hash('progTitle');
-      $anchorScroll();
-    }
+      programs.push(newprog);
+    }      
+    ProgramService.savePrograms(programs);
+    $state.go('programs');
   };
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
