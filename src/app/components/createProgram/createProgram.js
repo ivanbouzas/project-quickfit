@@ -1,7 +1,7 @@
 function createProgramController($http, $state, ProgramService, $window, $anchorScroll, $location, $stateParams) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {    
+  $ctrl.$onInit = function () {
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -43,7 +43,7 @@ function createProgramController($http, $state, ProgramService, $window, $anchor
         programs[$stateParams.id] = newprog;
       } else {
         programs.push(newprog);
-      }      
+      }
       ProgramService.savePrograms(programs);
       $state.go('programs');
     } else {
