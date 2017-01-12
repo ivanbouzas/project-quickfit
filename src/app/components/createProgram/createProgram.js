@@ -1,14 +1,12 @@
 function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-<<<<<<< HEAD
   $ctrl.$onInit = function () {
-=======
   $ctrl.$onInit = function () {    
     angular.element('.title').addClass('fadeInDown');    
     angular.element('#myWOlist').addClass('fadeInLeft');
     angular.element('#dataList').addClass('fadeInRight'); 
->>>>>>> a17ba6d5b20486ae79dbcc2c42905f71bb87d9e1
+
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
