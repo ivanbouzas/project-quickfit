@@ -127,3 +127,12 @@ hr{
 body{
 	background-image: url("images/concrete_bkg.jpg");
 }
+
+.image{
+	margin-left: 250px;
+}
+
+.navbar{
+	background-image: url("images/bkg.jpeg");
+	
+}
