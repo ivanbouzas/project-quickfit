@@ -4,6 +4,9 @@ html{
 body {	
   background-color: #FFFFFF;
 }
+h1{
+	font-weight: bold;
+}
 ul li{
 	list-style-type: none;
 }
@@ -20,8 +23,24 @@ hr{
     border-style: inset;
     border-width: 1px;
 }
+input:hover, input:focus{
+	transition: 0.1s all ease;
+	box-shadow: 1px 1px 4px 2px lightgrey; 
+}
+
+.component{	
+}
+.lowerBody{
+	
+	
+}
+.animated{
+	animation-duration: 0.6s;
+}
 .listExercise{
 	min-height: 50px;
+	border-radius: 10px;
+	transition: 0.5s all ease;
 }
 .glyphicon{
 	width: 40px;
@@ -35,6 +54,11 @@ hr{
 }
 .item{	
 	margin-bottom: 3px;
+}
+.item:hover{
+	transition: 0.2s all ease;		
+	box-shadow: 1px 1px 1px 3px #FE2E2E;
+	border: solid white 1px;
 }
 .itemName{
 	display: inline-block;
@@ -62,7 +86,7 @@ hr{
 	padding: 20px;
 	z-index: 3;
     height: 80%;
-    box-shadow: 0 4px 8px 0;
+    box-shadow: 1px 2px 10px 3px #FE2E2E;
     max-height: 425px;
 }
 .popImg{
@@ -110,7 +134,7 @@ hr{
     width: calc(100% + 10px);
     height: calc(100% + 10px);
     position: fixed;
-    background-color: #616161;
+    background-color: #585858;
     padding: 20px;
     top: -5px;
     left: -5px;
@@ -118,4 +142,15 @@ hr{
 .popScroll{
 	height: 90%;
 	overflow: auto;
+}
+.title{
+	background-color: #DF0101;
+	color: white;
+
+}
+.progTitle{
+
+}
+#hideDbList{
+	
 }
