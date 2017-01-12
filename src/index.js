@@ -1,2 +1,2 @@
 angular
-  .module('app', ['ui.router', 'as.sortable', 'ui.sortable', 'ngSanitize']);
+  .module('app', ['ui.router', 'ui.sortable', 'ngSanitize', 'ngAnimate']);
