@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams){
   var $ctrl = this;
   $ctrl.exercisesNew = [];
   $ctrl.$onInit = function () {
@@ -143,5 +143,5 @@ angular
   .component('createProgram', {
     templateUrl: 'app/components/createProgram/createProgram.html',
     controller: createProgramController
-  });
+});
 
