@@ -160,3 +160,7 @@ input:hover, input:focus{
 #hideDbList{
 		
 }
+
+.navbar{
+	background-image: url("images/bkg.jpeg");
+}
