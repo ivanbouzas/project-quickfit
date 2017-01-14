@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams, $timeout) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
   $ctrl.$onInit = function () {
@@ -20,13 +20,12 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $ctrl.activeDelete = true;
     $ctrl.overBody = false;
     $ctrl.ishideDbList = false;
-    console.log($ctrl.exercisesNew);
   };
   $ctrl.selectExercise = function (item, index) {
     item.showObjectives = false;
     $ctrl.exercisesNew.push(angular.copy(item));
     angular.element('#DbItem' + index).addClass('fadeOutLeft');
-    setTimeout(function () {
+    $timeout(function () {
       angular.element('#DbItem' + index).removeClass('fadeOutLeft');
       angular.element('#DbItem' + index).addClass('fadeIn');
     }, 600);
@@ -100,7 +99,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     if ($ctrl.exercisesNew[index].showObjectives) {
       angular.element('#Objective' + index).addClass('animated');
       angular.element('#Objective' + index).addClass('fadeIn');
-      setTimeout(function () {
+      $timeout(function () {
         angular.element('#Objective' + index).removeClass('animated');
       }, 500);
     }
