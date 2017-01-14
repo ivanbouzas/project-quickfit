@@ -15,11 +15,12 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     if (angular.isDefined($stateParams.id)) {
       $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
       $ctrl.programTitle = $ctrl.oldProgram.title;
-      $ctrl.exercisesNew = $ctrl.oldProgram.exercises;
+      $ctrl.exercisesNew = $ctrl.oldProgram.exercises;      
     }
     $ctrl.activeDelete = true;
     $ctrl.overBody = false; 
-    $ctrl.ishideDbList = false;                  
+    $ctrl.ishideDbList = false;   
+    console.log($ctrl.exercisesNew);               
   };
   $ctrl.selectExercise = function (item, index) {
     item.showObjectives = false;
@@ -28,8 +29,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     setTimeout(function () {
       angular.element('#DbItem'+index).removeClass('fadeOutLeft');
       angular.element('#DbItem'+index).addClass('fadeIn');
-    }, 600);
-    
+    }, 600);    
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
@@ -48,6 +48,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       title: $ctrl.programTitle,
       exercises: $ctrl.exercisesNew
     };
+    console.log(newprog);
     if (angular.isDefined($ctrl.oldProgram)) {
       programs[$stateParams.id] = newprog;
     } else {
@@ -111,19 +112,19 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   $ctrl.hideDbList = function () {
     $ctrl.ishideDbList = !$ctrl.ishideDbList;    
     if ($ctrl.ishideDbList) {      
-    angular.element('#dataList').addClass('fadeOutRight');    
-    angular.element('#myWOlist').removeClass('col-sm-offset-2');
-    angular.element('#myWOlist').addClass('col-sm-offset-4');    
-    angular.element('#hideDbList').removeClass('glyphicon-arrow-right');
-    angular.element('#hideDbList').addClass('glyphicon-arrow-left'); 
-    angular.element('#dataList').removeClass('fadeInRight');    
+      angular.element('#dataList').addClass('fadeOutRight');    
+      angular.element('#myWOlist').removeClass('col-sm-offset-2');
+      angular.element('#myWOlist').addClass('col-sm-offset-4');    
+      angular.element('#hideDbList').removeClass('glyphicon-arrow-right');
+      angular.element('#hideDbList').addClass('glyphicon-arrow-left'); 
+      angular.element('#dataList').removeClass('fadeInRight');    
     } else {        
       angular.element('#dataList').removeClass('fadeOutRight');
-    angular.element('#myWOlist').removeClass('col-sm-offset-4');
-    angular.element('#myWOlist').addClass('col-sm-offset-2');        
-    angular.element('#dataList').addClass('fadeInRight');  
-    angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
-    angular.element('#hideDbList').addClass('glyphicon-arrow-right'); 
+      angular.element('#myWOlist').removeClass('col-sm-offset-4');
+      angular.element('#myWOlist').addClass('col-sm-offset-2');        
+      angular.element('#dataList').addClass('fadeInRight');  
+      angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
+      angular.element('#hideDbList').addClass('glyphicon-arrow-right'); 
     }
   }
 }

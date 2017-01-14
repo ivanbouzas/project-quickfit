@@ -74,7 +74,7 @@ input:hover, input:focus{
 	margin-bottom: 5px;
 }
 .YWBtn{
-	float:right;
+	
 }
 .popDetailExe, .popNewExe{
 	min-width: 360px;
@@ -104,7 +104,7 @@ input:hover, input:focus{
 	width: 100px;
 }
 .better, .same, .worse{
-	border: solid 3px;
+	border: dotted 3px;
 }
 .better{
 	border-color: green;
@@ -146,7 +146,6 @@ input:hover, input:focus{
 .title{
 	background-color: #DF0101;
 	color: white;
-
 }
 .progTitle{
 

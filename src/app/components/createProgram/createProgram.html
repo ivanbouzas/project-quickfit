@@ -7,9 +7,9 @@
     <div class="col-sm-4 col-sm-offset-2 listExercise text-center animated" id="myWOlist">     
       <div class="col-xs-12"><h2>Your Workout</h2></div>
       <div class="col-xs-12">
-      	<h2>
+      	<h3>
           Title          
-        </h2> 
+        </h3> 
         <input id="progTitle" ng-model="$ctrl.programTitle" type="text" name="title" required/>
       </div>
       <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group col-xs-12">
@@ -79,12 +79,15 @@
             </div>                        
           </div>
         </li>
-      </ul>
-      <input type="submit" class="saveBtn btn btn-default glyphicon glyphicon-floppy-disk" value="Save Workout">
+      </ul>      
+      <input type="submit" class="saveBtn btn btn-default" value="Save Workout">
     </div>    
     </form>    
     <div class="col-sm-1 text-center animated bounceIn">
-    	<button id="hideDbList" ng-click="$ctrl.hideDbList()" class="btn btn-default glyphicon glyphicon-arrow-right"></button>
+    	<div class="col-sm-6">
+    		<button title="Toggle Database Exercises" id="hideDbList" ng-click="$ctrl.hideDbList()" class="btn btn-default glyphicon glyphicon-arrow-right"></button>	
+    	</div>
+    	
     </div>
     <div class="col-sm-4 listExercise text-center animated" id="dataList">           
       <div class="col-xs-12">      
