@@ -1,12 +1,10 @@
 function createProgramController($http, $state, ProgramService, $window, $location, $stateParams){
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {
   $ctrl.$onInit = function () {    
     angular.element('.title').addClass('fadeInDown');    
     angular.element('#myWOlist').addClass('fadeInLeft');
     angular.element('#dataList').addClass('fadeInRight'); 
-
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -109,7 +107,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   };
   $ctrl.showHideOverBody = function () {
     $ctrl.overBody = !$ctrl.overBody;
-  }
+  };
   $ctrl.hideDbList = function () {
     $ctrl.ishideDbList = !$ctrl.ishideDbList;    
     if ($ctrl.ishideDbList) {      
@@ -127,7 +125,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
       angular.element('#hideDbList').addClass('glyphicon-arrow-right'); 
     }
-  }
+  };
 }
 
 angular
