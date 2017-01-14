@@ -1,10 +1,10 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams){
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {    
-    angular.element('.title').addClass('fadeInDown');    
+  $ctrl.$onInit = function () {
+    angular.element('.title').addClass('fadeInDown');
     angular.element('#myWOlist').addClass('fadeInLeft');
-    angular.element('#dataList').addClass('fadeInRight'); 
+    angular.element('#dataList').addClass('fadeInRight');
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -15,21 +15,21 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     if (angular.isDefined($stateParams.id)) {
       $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
       $ctrl.programTitle = $ctrl.oldProgram.title;
-      $ctrl.exercisesNew = $ctrl.oldProgram.exercises;      
+      $ctrl.exercisesNew = $ctrl.oldProgram.exercises;
     }
     $ctrl.activeDelete = true;
-    $ctrl.overBody = false; 
-    $ctrl.ishideDbList = false;   
-    console.log($ctrl.exercisesNew);               
+    $ctrl.overBody = false;
+    $ctrl.ishideDbList = false;
+    console.log($ctrl.exercisesNew);
   };
   $ctrl.selectExercise = function (item, index) {
     item.showObjectives = false;
     $ctrl.exercisesNew.push(angular.copy(item));
-    angular.element('#DbItem'+index).addClass('fadeOutLeft');
+    angular.element('#DbItem' + index).addClass('fadeOutLeft');
     setTimeout(function () {
-      angular.element('#DbItem'+index).removeClass('fadeOutLeft');
-      angular.element('#DbItem'+index).addClass('fadeIn');
-    }, 600);    
+      angular.element('#DbItem' + index).removeClass('fadeOutLeft');
+      angular.element('#DbItem' + index).addClass('fadeIn');
+    }, 600);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
@@ -52,13 +52,13 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       programs[$stateParams.id] = newprog;
     } else {
       programs.push(newprog);
-    }      
+    }
     ProgramService.savePrograms(programs);
     $state.go('programs');
   };
   $ctrl.getDetail = function (index) {
-    $ctrl.exeDetailId = index;    
-    angular.element('#popDetailExe').css('display', 'block');    
+    $ctrl.exeDetailId = index;
+    angular.element('#popDetailExe').css('display', 'block');
     $ctrl.showHideOverBody();
   };
   $ctrl.createExe = function () {
@@ -97,33 +97,33 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   };
   $ctrl.showObjectives = function (index) {
     $ctrl.exercisesNew[index].showObjectives = !$ctrl.exercisesNew[index].showObjectives;
-    if ($ctrl.exercisesNew[index].showObjectives) {      
-      angular.element('#Objective'+index).addClass('animated');      
-      angular.element('#Objective'+index).addClass('fadeIn');
-      setTimeout(function(){
-        angular.element('#Objective'+index).removeClass('animated');    
+    if ($ctrl.exercisesNew[index].showObjectives) {
+      angular.element('#Objective' + index).addClass('animated');
+      angular.element('#Objective' + index).addClass('fadeIn');
+      setTimeout(function () {
+        angular.element('#Objective' + index).removeClass('animated');
       }, 500);
-    } 
+    }
   };
   $ctrl.showHideOverBody = function () {
     $ctrl.overBody = !$ctrl.overBody;
   };
   $ctrl.hideDbList = function () {
-    $ctrl.ishideDbList = !$ctrl.ishideDbList;    
-    if ($ctrl.ishideDbList) {      
-      angular.element('#dataList').addClass('fadeOutRight');    
+    $ctrl.ishideDbList = !$ctrl.ishideDbList;
+    if ($ctrl.ishideDbList) {
+      angular.element('#dataList').addClass('fadeOutRight');
       angular.element('#myWOlist').removeClass('col-sm-offset-2');
-      angular.element('#myWOlist').addClass('col-sm-offset-4');    
+      angular.element('#myWOlist').addClass('col-sm-offset-4');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-right');
-      angular.element('#hideDbList').addClass('glyphicon-arrow-left'); 
-      angular.element('#dataList').removeClass('fadeInRight');    
-    } else {        
+      angular.element('#hideDbList').addClass('glyphicon-arrow-left');
+      angular.element('#dataList').removeClass('fadeInRight');
+    } else {
       angular.element('#dataList').removeClass('fadeOutRight');
       angular.element('#myWOlist').removeClass('col-sm-offset-4');
-      angular.element('#myWOlist').addClass('col-sm-offset-2');        
-      angular.element('#dataList').addClass('fadeInRight');  
+      angular.element('#myWOlist').addClass('col-sm-offset-2');
+      angular.element('#dataList').addClass('fadeInRight');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
-      angular.element('#hideDbList').addClass('glyphicon-arrow-right'); 
+      angular.element('#hideDbList').addClass('glyphicon-arrow-right');
     }
   };
 }
@@ -133,5 +133,5 @@ angular
   .component('createProgram', {
     templateUrl: 'app/components/createProgram/createProgram.html',
     controller: createProgramController
-});
+  });
 

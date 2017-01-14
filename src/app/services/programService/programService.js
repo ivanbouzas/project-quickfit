@@ -6,7 +6,7 @@ function ProgramService() {
   this.getPrograms = function () {
     if (localStorage.getItem(pKey) !== null) {
       programs = angular.fromJson(localStorage.getItem(pKey));
-      angular.forEach(programs, function(value, key, obj) {
+      angular.forEach(programs, function (value, key, obj) {
         value.exeUnitTime = new Date(value.exeUnitTime != null ? value.exeUnitTime : '0');
         value.exeUnitRest = new Date(value.exeUnitRest != null ? value.exeUnitRest : '0');
         value.exeObjTime = new Date(value.exeObjTime != null ? value.exeObjTime : '0');
