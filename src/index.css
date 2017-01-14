@@ -29,9 +29,9 @@ input:hover, input:focus{
 }
 
 .component{	
+
 }
 .lowerBody{
-	
 	
 }
 .animated{
@@ -143,6 +143,13 @@ input:hover, input:focus{
 	height: 90%;
 	overflow: auto;
 }
+
+.image{
+	margin-left: 250px;
+}
+
+
+
 .title{
 	background-color: #DF0101;
 	color: white;
@@ -151,5 +158,5 @@ input:hover, input:focus{
 
 }
 #hideDbList{
-	
+		
 }

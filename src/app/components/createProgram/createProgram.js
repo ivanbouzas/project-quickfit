@@ -1,10 +1,12 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams){
   var $ctrl = this;
   $ctrl.exercisesNew = [];
+  $ctrl.$onInit = function () {
   $ctrl.$onInit = function () {    
     angular.element('.title').addClass('fadeInDown');    
     angular.element('#myWOlist').addClass('fadeInLeft');
     angular.element('#dataList').addClass('fadeInRight'); 
+
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -48,7 +50,6 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       title: $ctrl.programTitle,
       exercises: $ctrl.exercisesNew
     };
-    console.log(newprog);
     if (angular.isDefined($ctrl.oldProgram)) {
       programs[$stateParams.id] = newprog;
     } else {
@@ -134,5 +135,5 @@ angular
   .component('createProgram', {
     templateUrl: 'app/components/createProgram/createProgram.html',
     controller: createProgramController
-  });
+});
 

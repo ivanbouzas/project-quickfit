@@ -1,11 +1,11 @@
 function exeDetailController($http, $filter, ProgramService) {
   var $ctrl = this;
 
-  $ctrl.close = function () {  
-    angular.element('#popDetailExe').attr('style', 'display:none;');    
+  $ctrl.close = function () {
+    angular.element('#popDetailExe').attr('style', 'display:none;');
     $ctrl.overBody();
   };
-  $ctrl.$onChanges = function () {    
+  $ctrl.$onChanges = function () {
     if (angular.isDefined($ctrl.exeDetailId)) {
       if ($ctrl.ownExe === 0) {
         var exercises = ProgramService.getOwnExercises();
