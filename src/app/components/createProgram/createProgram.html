@@ -27,7 +27,7 @@
               Sets
               <input type="number" step="1" min="1" class="exeInput" name="nbSets" ng-model="$ctrl.exercisesNew[$index].nbSets" required>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-7">
               Weight
               <input type="number" step="any" min="0" name="exeUnitWeight" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   
             </div>                                    
@@ -47,8 +47,7 @@
           </div>
           <div class="col-xs-12 animated" id="Objective{{$index}}" ng-hide="!$ctrl.exercisesNew[$index].showObjectives">
             <hr>
-            <div class="col-xs-6 text-center"><strong>Objectives</strong></div>
-            <div class="col-xs-6 text-center"><strong>Increments</strong></div>  
+            <div class="col-xs-12 text-center"><strong>Objective / Increment</strong></div>
             <div class="col-xs-12">            
               <div class="col-sm-6">
                 Reps
@@ -59,8 +58,7 @@
                 <input type="number" step="any" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjWeightInc" ng-required="$ctrl.exercisesNew[$index].exeObjRep">
               </div>                           
             </div>
-            <div class="col-xs-12"> 
-                                   
+            <div class="col-xs-12">                                 
               <div class="col-sm-6">              
                 Time
                 <select name="exeObjTimeType" ng-model="$ctrl.exercisesNew[$index].exeObjTimeType" ng-required="$ctrl.exercisesNew[$index].exeObjTime">
@@ -74,7 +72,7 @@
                 <input type="time" step="1" name="exeObjTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTime" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
               </div>
              <div class="col-sm-6">
-                Time                
+                Time Increment              
                 <input type="time" step="1" name="exeObjTimeInc" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTimeInc" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
               </div>  
             </div>                        

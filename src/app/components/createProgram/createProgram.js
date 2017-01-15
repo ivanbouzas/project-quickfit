@@ -1,7 +1,7 @@
 function createProgramController($http, $state, ProgramService, $window, $location, $stateParams, $timeout) {
-  var $ctrl = this;
-  $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {       
+  var $ctrl = this;  
+  $ctrl.$onInit = function () { 
+    $ctrl.exercisesNew = [];      
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);

@@ -36,7 +36,7 @@ input:hover, input:focus{
 	
 }
 .animated{
-	animation-duration: 1s;
+	animation-duration: 0.8s;
 }
 .listExercise{
 	min-height: 50px;
@@ -53,13 +53,12 @@ input:hover, input:focus{
 }
 .glyphicon-menu-up, .glyphicon-menu-down{
 }
-.item{	
-	margin-bottom: 3px;
+.item, .itemProgram{	
+	margin-bottom: 4px;
 }
 .item:hover{
 	transition: 0.2s all ease;		
 	box-shadow: 1px 1px 1px 3px #FE2E2E;
-	border: solid white 1px;
 }
 .itemName{
 	display: inline-block;
@@ -97,6 +96,10 @@ input:hover, input:focus{
 .popCross{
 	padding: 3px;
 	border:solid 1px;
+	position: absolute;
+	left: 80%;
+    z-index: 3;
+    top: 23px;
 }
 .exeInput{
 	width: 45px;
@@ -105,20 +108,21 @@ input:hover, input:focus{
 	width: 100px;
 }
 .better, .same, .worse{
-	border: solid 5px;
+	transition: 0.5s all;
 }
 .better{
-	border-color: green;
+	box-shadow: 1px 1px 1px 2px green;
 }
 .same{
-	border-color: lightgrey;
+	box-shadow: 1px 1px 1px 2px lightgrey;
 }
 .worse{
-	border-color: yellow;
+	box-shadow: 1px 1px 1px 2px yellow;
 }
 .objectiveTxt{
 	color: green;
 	font-weight: bold;
+	font-size: 16px;
 }
 .workoutTitle{
 	font-size: 18px;
@@ -150,12 +154,22 @@ input:hover, input:focus{
 	margin-left: 250px;
 }
 
-
+.btn:hover{
+	transition: 0.5s;
+	background-color: #FE2E2E;
+	border: solid 1px #FE2E2E;
+	color: white;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px 1px #FE2E2E;
+}
 
 .title{
 	background-color: #DF0101;
 	color: white;
+	margin-bottom: 20px;
+	text-align: center;
 }
+<<<<<<< HEAD
 .progTitle{
 
 }
@@ -171,3 +185,10 @@ input:hover, input:focus{
 	background-image: url("images/bkg.jpeg");
 }*/
 
+=======
+.navbar {
+	background-color: transparent;
+	border-radius: 0px;
+	margin-bottom: 5px;
+}
+>>>>>>> d536b303ec13e04692eb3107ed8a89c6cea2a1d3
