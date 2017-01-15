@@ -164,6 +164,11 @@ Après tout cela, il a fallu implémenter les objets date avec plein de tests à
 
 Au final, l'application fonctionne pour cette partie avec les Dates, à voir lors de l'implémentation du module 'Calendrier' plus tard..
 
+#### Tests
+
+Souvent dans l'application, il fallait faire des console.log() ou $log pour débeuger. Nous aurions pu chercher à faire des batteries de tests. Mais comme cela n'a pas été vu en cours, nous n'avons pas trop creusé. Il serait intéressant de voir si intégrer des tests maintenant permettrait de développer plus efficacement les futures fonctionnalitées.
+
+
 ### Future de l'application
 
 Il est prévu d'intégrer la gestion des données dans le cloud, notamment par firebase qui est la première idée proposée pour l'instant.
@@ -172,4 +177,8 @@ Les deux modules, Calendrier et Chronomètre, sont pour l'instant relayés en se
 
 ## Conclusion
 
+Ce projet a demandé beaucoup plus de travail qu'initialement imaginé. Angular étant un framework assez conséquent, il est impossible d'apprendre toutes les combinent possible pour programmer le plus efficacement, mais au final nous avons une application qui fonctionne et nous en sommes fière, même si c'est vrai qu'on avait imaginé mettre beaucoup plus de fonctionnalités.
 
+Cette application sera continuée, car nous allons l'utilisée au quotidien. Rien que ça nous montre que même si cela à été difficile, faire dufaire du JS, Angular et Git pour réaliser ce projet ne nous a pas déplu.
+
+Nous sommes reconnaissant d'avoir pu apprendre à développer des applications de cette manière, cela nous sera définitivement utile par la suite.
