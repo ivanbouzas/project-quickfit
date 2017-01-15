@@ -1,9 +1,10 @@
 <div class="component">
   <div class="col-sm-12">
-    <div class="col-sm-12 text-center">
+    <div class="col-sm-12 title text-center animated fadeInDown"><h1>Your Programs</h1></div>
+    <div class="col-sm-12 text-center animated fadeIn">
       <button ui-sref="createProgram" class="btn btn-default">Create new program</button>  
     </div>
-    <div class="col-sm-4 col-sm-offset-3 text-center">
+    <div class="col-sm-4 col-sm-offset-3 text-center animated fadeInUp">
       <ul ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.programs" class="list-group">
         <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item col-sm-12 col-sm-offset-3 text-center">
           <div class="workoutTitle col-sm-6">{{ e.title }}</div>

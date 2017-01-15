@@ -3,7 +3,7 @@
     <div class="col-xs-12 text-center title animated fadeInDown"><h1>{{$ctrl.program.title}}</h1></div>
     <div class="col-sm-8 col-sm-offset-2">    
       <ul class="list-group">
-        <li ng-repeat="item in $ctrl.program.exercises track by $index" class="list-group-item col-xs-12 itemProgram animated fadeInUp {{$ctrl.resumeClass[$index]}}" id="exercise{{$index}}">
+        <li ng-repeat="item in $ctrl.program.exercises track by $index" class="list-group-item col-xs-12 itemProgram animated fadeIn {{$ctrl.resumeClass[$index]}}" id="exercise{{$index}}">
           <form ng-submit="$ctrl.nextSet($index, item)">
             <div class="col-xs-12" >
               <div class="itemName col-sm-2"><strong>{{item.name}}</strong></div>

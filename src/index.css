@@ -58,7 +58,6 @@ input:hover, input:focus{
 .item:hover{
 	transition: 0.2s all ease;		
 	box-shadow: 1px 1px 1px 3px #FE2E2E;
-	border: solid white 1px;
 }
 .itemName{
 	display: inline-block;
@@ -96,6 +95,10 @@ input:hover, input:focus{
 .popCross{
 	padding: 3px;
 	border:solid 1px;
+	position: absolute;
+	left: 80%;
+    z-index: 3;
+    top: 23px;
 }
 .exeInput{
 	width: 45px;
@@ -104,17 +107,16 @@ input:hover, input:focus{
 	width: 100px;
 }
 .better, .same, .worse{
-	border: solid 2px;
 	transition: 0.5s all;
 }
 .better{
-	border-color: green;
+	box-shadow: 1px 1px 1px 2px green;
 }
 .same{
-	border-color: lightgrey;
+	box-shadow: 1px 1px 1px 2px lightgrey;
 }
 .worse{
-	border-color: yellow;
+	box-shadow: 1px 1px 1px 2px yellow;
 }
 .objectiveTxt{
 	color: green;
@@ -151,11 +153,19 @@ input:hover, input:focus{
 	margin-left: 250px;
 }
 
-
+.btn:hover{
+	transition: 0.5s;
+	background-color: #FE2E2E;
+	border: solid 1px #FE2E2E;
+	color: white;
+	font-weight: bold;
+	box-shadow: 1px 1px 1px 1px #FE2E2E;
+}
 
 .title{
 	background-color: #DF0101;
 	color: white;
+	margin-bottom: 20px;
 }
 .progTitle{
 
