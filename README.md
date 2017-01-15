@@ -25,6 +25,7 @@ $ gulp serve
 Cette application permet de manière simple et rapide de créer des programmes d'exercices physique et de les "lancer" lors de vos séances.
 Le but était de tendre vers le moyen le plus efficient de pouvoir faire une routine que ce soit pour faire des activités par répétitions ou chronométrées.
 Il était aussi important de pouvoir s'améliorer avec l'application en fixant des objectifs qui modifient de manière automatisé les temps et les poids employés pour les exercises.
+
 ### Outils/Librairies
 - JQuery
 - AngularJS
@@ -36,6 +37,7 @@ Il était aussi important de pouvoir s'améliorer avec l'application en fixant d
 - Npm
 - Bower
 - Gulp
+
 ### Plan de départ
 L'idée de base était de faire une application de gestion de routines de fitness avec 3 principales fonctionnalités :
 - Programmes 
