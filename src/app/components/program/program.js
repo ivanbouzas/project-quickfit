@@ -1,11 +1,11 @@
 function programController(ProgramService, $stateParams, $state) {
-  var $ctrl = this;  
-  var doneExercises = [];  
+  var $ctrl = this;
+  var doneExercises = [];
   $ctrl.$onInit = function () {
     $ctrl.program = ProgramService.getPrograms()[$stateParams.id];
     $ctrl.resumeClass = [];
     $ctrl.showObjectiveTxt = [];
-    $ctrl.resume = false;        
+    $ctrl.resume = false;
   };
 
   $ctrl.nextSet = function (index, exercise) {
@@ -29,7 +29,7 @@ function programController(ProgramService, $stateParams, $state) {
           } else {
             $ctrl.resumeClass[key] = 'better';
           }
-        }        
+        }
         if (angular.isDefined(value.time)) {
           if (angular.isDefined(value.exeObjTimeType)) {
             if (value.exeObjTimeType === 'plus') {
@@ -67,7 +67,7 @@ function programController(ProgramService, $stateParams, $state) {
             }
           } else if (value.exeObjTimeType === 'minus') {
             if (doneExercises[key].time <= value.exeObjTime) {
-               doneExercises[key].exeObjTime.setTime(doneExercises[key].exeObjTime.getTime() - (value.exeObjTimeInc - new Date(-3600000)));
+              doneExercises[key].exeObjTime.setTime(doneExercises[key].exeObjTime.getTime() - (value.exeObjTimeInc - new Date(-3600000)));
               $ctrl.resumeClass[key] = 'better objective';
               $ctrl.showObjectiveTxt[key] = true;
             }
