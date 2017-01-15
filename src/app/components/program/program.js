@@ -4,7 +4,7 @@ function programController(ProgramService, $stateParams, $state) {
   var doneExercises = [];
   $ctrl.resumeClass = [];
   $ctrl.resume = false;
-  /*$ctrl.$onInit = function () {
+  $ctrl.$onInit = function () {
     angular.forEach($ctrl.program.exercises, function (value, key) {
       if (key % 2) {        
         angular.element('#exe' + key).addClass('fadeInLeft');
@@ -14,10 +14,10 @@ function programController(ProgramService, $stateParams, $state) {
       }
     });
     
-  };*/
+  };
   $ctrl.nextSet = function (index, exercise) {
+    exercise.time = exercise.time === null ? undefined : new Date(exercise.time);
     doneExercises.push(exercise);
-    console.log(doneExercises);
     if ($ctrl.program.exercises[index].nbSets === 1) {
       $ctrl.program.exercises.splice(index, 1);
     } else {
@@ -37,9 +37,7 @@ function programController(ProgramService, $stateParams, $state) {
             $ctrl.resumeClass[key] = 'better';
           }
         }
-        if (angular.isDefi
-          ned(value.time)) {
-          doneExercises[key].difftimeOldNew = value.time.getTime() - doneExercises[key].time.getTime();
+        if (angular.isDefined(value.time)) {
           if (angular.isDefined(value.exeObjTimeType)) {
             if (value.exeObjTimeType === 'plus') {
               if (value.time > doneExercises[key].time) {
@@ -80,7 +78,6 @@ function programController(ProgramService, $stateParams, $state) {
           }
         }
       });
-      console.log(doneExercises);
       $ctrl.program.exercises = doneExercises;
     }
   };
