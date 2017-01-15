@@ -23,9 +23,5 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('createProgram', {
       url: '/createProgram?id',
       component: 'createProgram'
-    })
-    .state('calendarmain', {
-      url: '/calendarmain',
-      component: 'calendarmain'
     });
 }
