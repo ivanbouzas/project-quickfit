@@ -9,6 +9,7 @@ h1{
 }
 ul li{
 	list-style-type: none;
+	
 }
 div{
 	padding: 3px;
@@ -168,8 +169,26 @@ input:hover, input:focus{
 	margin-bottom: 20px;
 	text-align: center;
 }
+
+.progTitle{
+
+}
+#hideDbList{
+		
+}
+
+.btn-default{
+	background-color: cornsilk;
+}
+
+/*.navbar{
+	background-image: url("images/bkg.jpeg");
+}*/
+
+
 .navbar {
 	background-color: transparent;
 	border-radius: 0px;
 	margin-bottom: 5px;
 }
+
