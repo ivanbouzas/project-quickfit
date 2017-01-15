@@ -52,13 +52,13 @@ Planification des routines dans le temps
 Les croquis suivant représente les premières idées d'écran qui ont été faite avant de commencer le développement de l'application.
 
 ![Croquis](./md_images/1.jpg)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
-![Croquis](http://url/to/img.png)
+![Croquis](./md_images/2.jpg)
+![Croquis](./md_images/3.jpg)
+![Croquis](./md_images/4.jpg)
+![Croquis](./md_images/5.jpg)
+![Croquis](./md_images/6.jpg)
+![Croquis](./md_images/7.jpg)
+![Croquis](./md_images/8.jpg)
 
 
 ### Réalisation
