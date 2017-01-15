@@ -53,6 +53,8 @@ Les croquis suivant représente les premières idées d'écran qui ont été fai
 
 !!!!!  insert croquis here !!!!!
 
+
+
 ### Réalisation
 Pour le dévellopement de ce projet plusieurs choses ont été mises en place.
 Le dossier 'master' ici contient le code source de l'application.
@@ -88,7 +90,15 @@ Les modules Calendrier et Chronomètre sont pour l'instant mis en attente pour l
 
 ### Problèmes/Solutions
 
-#### 
+#### BootStrap dependencie
+
+Un problème est survenu avec bootstrap, la version par défaut ne fonctionnait pas correctement avec les plug-ins et fonction utilisé après être passé à Angular 1.6.
+
+Il a donc fallu faire un peu de recherche est installer à l'aide de bower la version nécessaire.
+
+Gulp enlevait aussi par défaut la dépendance a Bootstrap pour ses fichiers de styles.
+Il a fallu aller dans le fichier de configurations de gulp dans le dossier 'conf' du projet et enlever le 'exlude' sous 'exports.wiredep' qui est le module qui 'inject' les dépendances dans le fichier index.html.
+Le fichier de dépendances avec bower a aussi été modifié avec une propriété 'resolution' qui pointe sur boostrap.
 
 #### Git
 
@@ -121,6 +131,38 @@ Malheureusement cela produit plusieurs problèmes :
     Apparement le problème ne survient que susr les fichiers javascript, alors que ceux si sont à la même enseigne que les autres.
     Bref, nous n'avons pas plus creuser de ce côté, ce problème n'empechant pas l'application de fonctionner s'il est traité au final comme expliqué au début.
     
+#### Deploiement
+
+Lors du déploiement sur Github, on s'apercoie que le site ne s'affiche pas. 
+Cela est dû au routage des fichiers par Angular et que Github soit un serveur web static, impossible de régler donc le routage par ce dernier.
+
+Il existe deux solutions : 
+
+- Desactiver le html5mode
+  Dans ce cas, l'adressage ce fait avec un #! ajouter après le domaine.
+  La page est entièrement refresh si l'adresse est changée
+- Utiliser le html5mode 
+  Il faut pour cela ajouter une balise <base> dans le fichier index.html qui indique que ce fichier est la base de l'application
+  Avec l'API HTML5, le service Angular $location s'occupent ensuite de gérer les URLs.
+  Cela permet de pouvoir modifier, consulter et lancer des requête sans recharger l'entier de la page.
+  
+Nous avons choisi d'appliquer la dernière solution, car elle est porté vers le futur et permet à l'application d'avoir un fonctionnement plus 'léger'.
+Mais pour le site déployer sur Github malheureusement cela implique qu'on le peut pas recharger une page manuellement, sinon le service Angular en charge de l'API HTML5 ($location) perd la racine de l'application et ne peut pas retrouver le fichier index.html.
+Idéalement avec ce genre de solution il faudrait un serveur web configurable pour palier à cette perte de la 'base'.
+ 
+#### Date
+
+Problème universelle dans le monde de l'informatique, la gestion des dates durant ce projets à été passé par des moments de casse-tête, de réalisation.. et encore de réalisation. 
+Tout d'abord c'était des dates en textes simples - impossible à gérer.
+Deuxième solution, implémenter des objets Date.
+Il a fallu ajouter pas mal de choses, notamment lors de la recupération des données par le service dans le LocalStorage.
+En testant dans la console pour savoir quelle date était retournée par l'objet à sa création, on remarque qu'il met le 1 janvier 1970 oui, mais il est 1h00 et pas 00h00. Bref, un casse-tête qui nous a permis de découvrir le monde magique du formattage de Date en Javascript.
+Il faut d'abord comprendre comment fonction l'objet Date en Javascript, ainsi qu'essayer de profiter des méthodes qu'il fournit.
+Ensuite, il a fallu voir comment fonctionne la balise HTML <time> pour avoir des 'inputs' stricts, être sûr que l'on récupère une date bien formatter.
+
+Après tout cela, il a fallu implémenter les objets date avec plein de tests à n'en pas finir. Surtout quand on remarque les objets dates se comparent bien pour des "<" ">", mais lorsqu'on tente une égalité il faut récupérer l'horodatage de l'objet et comparer les deux numéros.
+
+Au final, l'application fonctionne pour cette partie avec les Dates, à voir lors de l'implémentation du module 'Calendrier' plus tard..
 
 ### Future de l'application
 
