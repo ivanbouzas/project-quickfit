@@ -35,7 +35,7 @@ input:hover, input:focus{
 	
 }
 .animated{
-	animation-duration: 1s;
+	animation-duration: 0.8s;
 }
 .listExercise{
 	min-height: 50px;
@@ -166,10 +166,10 @@ input:hover, input:focus{
 	background-color: #DF0101;
 	color: white;
 	margin-bottom: 20px;
+	text-align: center;
 }
-.progTitle{
-
-}
-#hideDbList{
-		
+.navbar {
+	background-color: transparent;
+	border-radius: 0px;
+	margin-bottom: 5px;
 }
