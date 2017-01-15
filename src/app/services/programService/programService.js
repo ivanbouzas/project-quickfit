@@ -6,11 +6,14 @@ function ProgramService() {
   this.getPrograms = function () {
     if (localStorage.getItem(pKey) !== null) {
       programs = angular.fromJson(localStorage.getItem(pKey));
-      angular.forEach(programs, function (value, key, obj) {
-        value.exeUnitTime = new Date(value.exeUnitTime !== null ? value.exeUnitTime : '0');
-        value.exeUnitRest = new Date(value.exeUnitRest !== null ? value.exeUnitRest : '0');
-        value.exeObjTime = new Date(value.exeObjTime !== null ? value.exeObjTime : '0');
-        value.exeObjTimeInc = new Date(value.exeObjTimeInc !== null ? value.exeObjTimeInc : '0');
+      angular.forEach(programs, function (value) {
+        angular.forEach(value.exercises, function (value) {
+          value.exeUnitTime = value.exeUnitTime === null ? undefined : new Date(value.exeUnitTime);
+          value.exeUnitRest = value.exeUnitRest === null ? undefined : new Date(value.exeUnitRest);
+          value.exeObjTime = value.exeObjTime === null ? undefined : new Date(value.exeObjTime);
+          value.exeObjTimeInc = value.exeObjTimeInc === null ? undefined : new Date(value.exeObjTimeInc);
+          value.time = value.time === null ? undefined : new Date(value.time);
+        });
       });
     }
     return programs;

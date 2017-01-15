@@ -4,7 +4,19 @@ function programController(ProgramService, $stateParams, $state) {
   var doneExercises = [];
   $ctrl.resumeClass = [];
   $ctrl.resume = false;
+  $ctrl.$onInit = function () {
+    angular.forEach($ctrl.program.exercises, function (value, key) {
+      if (key % 2) {        
+        angular.element('#exe' + key).addClass('fadeInLeft');
+      } else {
+        console.log('#exe' + key);
+        angular.element('#exe' + key).addClass('fadeInRight');
+      }
+    });
+    
+  };
   $ctrl.nextSet = function (index, exercise) {
+    exercise.time = exercise.time === null ? undefined : new Date(exercise.time);
     doneExercises.push(exercise);
     if ($ctrl.program.exercises[index].nbSets === 1) {
       $ctrl.program.exercises.splice(index, 1);
@@ -26,7 +38,6 @@ function programController(ProgramService, $stateParams, $state) {
           }
         }
         if (angular.isDefined(value.time)) {
-          doneExercises[key].difftimeOldNew = value.time - doneExercises[key].time;
           if (angular.isDefined(value.exeObjTimeType)) {
             if (value.exeObjTimeType === 'plus') {
               if (value.time > doneExercises[key].time) {
@@ -56,12 +67,12 @@ function programController(ProgramService, $stateParams, $state) {
         if (angular.isDefined(value.exeObjTime)) {
           if (value.exeObjTimeType === 'plus') {
             if (doneExercises[key].time >= value.exeObjTime) {
-              doneExercises[key].exeObjTime += doneExercises[key].exeObjTimeInc;
+              doneExercises[key].exeObjTime.setTime(doneExercises[key].exeObjTime.getTime() + (value.exeObjTimeInc - new Date(-3600000)));
               $ctrl.resumeClass[key] = 'better objective';
             }
           } else if (value.exeObjTimeType === 'minus') {
-            if (doneExercises[key].time <= value.exeObjTime) {
-              doneExercises[key].exeObjTime += doneExercises[key].exeObjTimeInc;
+            if (doneExercises[key].time <= value.exeObjTime.getTime()) {
+               doneExercises[key].exeObjTime.setTime(doneExercises[key].exeObjTime.getTime() - (value.exeObjTimeInc - new Date(-3600000)));
               $ctrl.resumeClass[key] = 'better objective';
             }
           }

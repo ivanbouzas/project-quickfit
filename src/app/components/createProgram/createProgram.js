@@ -1,10 +1,7 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams, $timeout) {
   var $ctrl = this;
   $ctrl.exercisesNew = [];
-  $ctrl.$onInit = function () {
-    angular.element('.title').addClass('fadeInDown');
-    angular.element('#myWOlist').addClass('fadeInLeft');
-    angular.element('#dataList').addClass('fadeInRight');
+  $ctrl.$onInit = function () {       
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -16,17 +13,19 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
       $ctrl.programTitle = $ctrl.oldProgram.title;
       $ctrl.exercisesNew = $ctrl.oldProgram.exercises;
+      angular.forEach($ctrl.exercisesNew, function (value) {
+        value.showObjectives = false;
+      });
     }
     $ctrl.activeDelete = true;
     $ctrl.overBody = false;
     $ctrl.ishideDbList = false;
-    console.log($ctrl.exercisesNew);
   };
   $ctrl.selectExercise = function (item, index) {
     item.showObjectives = false;
     $ctrl.exercisesNew.push(angular.copy(item));
     angular.element('#DbItem' + index).addClass('fadeOutLeft');
-    setTimeout(function () {
+    $timeout(function () {
       angular.element('#DbItem' + index).removeClass('fadeOutLeft');
       angular.element('#DbItem' + index).addClass('fadeIn');
     }, 600);
@@ -100,7 +99,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     if ($ctrl.exercisesNew[index].showObjectives) {
       angular.element('#Objective' + index).addClass('animated');
       angular.element('#Objective' + index).addClass('fadeIn');
-      setTimeout(function () {
+      $timeout(function () {
         angular.element('#Objective' + index).removeClass('animated');
       }, 500);
     }

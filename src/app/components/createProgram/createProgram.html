@@ -1,10 +1,10 @@
 <div class="component">
-  <div class="col-xs-12 title animated"> 
+  <div class="col-xs-12 title animated fadeInDown"> 
     <div class="col-xs-12 text-center"><h1>Create Your Workout</h1></div> 
   </div>
   <div class="col-xs-12 lowerBody animated">
     <form name="formCtrl" ng-submit="$ctrl.saveProgram()">
-    <div class="col-sm-4 col-sm-offset-2 listExercise text-center animated" id="myWOlist">     
+    <div class="col-sm-4 col-sm-offset-2 listExercise text-center animated fadeInLeft" id="myWOlist">     
       <div class="col-xs-12"><h2>Your Workout</h2></div>
       <div class="col-xs-12">
       	<h3>
@@ -25,11 +25,11 @@
           <div class="col-xs-12 text-left">
             <div class="col-xs-3">
               Sets
-              <input type="number" min="1" class="exeInput" name="nbSets" ng-model="$ctrl.exercisesNew[$index].nbSets" required>
+              <input type="number" step="1" min="1" class="exeInput" name="nbSets" ng-model="$ctrl.exercisesNew[$index].nbSets" required>
             </div>
             <div class="col-xs-3">
               Weight
-              <input type="number" min="0" name="exeUnitWeight" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   
+              <input type="number" step="any" min="0" name="exeUnitWeight" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   
             </div>                                    
           </div>  
           <div class="col-xs-12 text-left">
@@ -42,17 +42,25 @@
               <input type="time" step="1" name="exeUnitRest" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeUnitRest">
             </div>  
             <div class="col-sm-1">
-              <span ng-click="$ctrl.showObjectives($index)" class="btn btn-default glyphicon " ng-class="item.showObjectives ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'"></span>  
+              <span title="Show Objectives" ng-click="$ctrl.showObjectives($index)" class="btn btn-default glyphicon" ng-class="item.showObjectives ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'"></span>  
             </div>                    
           </div>
           <div class="col-xs-12 animated" id="Objective{{$index}}" ng-hide="!$ctrl.exercisesNew[$index].showObjectives">
             <hr>
-            <div class="col-xs-12 text-center"><strong>Objectives</strong></div>
+            <div class="col-xs-6 text-center"><strong>Objectives</strong></div>
+            <div class="col-xs-6 text-center"><strong>Increments</strong></div>  
             <div class="col-xs-12">            
               <div class="col-sm-6">
                 Reps
-                <input type="number" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjRep">
+                <input type="number" step="1" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjRep">
               </div> 
+                 <div class="col-sm-6">
+                Weight
+                <input type="number" step="any" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjWeightInc" ng-required="$ctrl.exercisesNew[$index].exeObjRep">
+              </div>                           
+            </div>
+            <div class="col-xs-12"> 
+                                   
               <div class="col-sm-6">              
                 Time
                 <select name="exeObjTimeType" ng-model="$ctrl.exercisesNew[$index].exeObjTimeType" ng-required="$ctrl.exercisesNew[$index].exeObjTime">
@@ -64,18 +72,11 @@
                   </option>
                 </select>
                 <input type="time" step="1" name="exeObjTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTime" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
-              </div>              
-            </div>
-            <div class="col-xs-12"> 
-              <div class="col-xs-12 text-center"><strong>Increments</strong></div>           
-              <div class="col-sm-6">
-                Weight
-                <input type="number" min="0" name="exeObjRep" class="exeInput" ng-model="$ctrl.exercisesNew[$index].exeObjWeightInc" ng-required="$ctrl.exercisesNew[$index].exeObjRep">
-              </div> 
-              <div class="col-sm-6">
+              </div>
+             <div class="col-sm-6">
                 Time                
-                <input type="time" step="1" name="exeObjTime" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTimeInc" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
-              </div>              
+                <input type="time" step="1" name="exeObjTimeInc" class="exeInput timeInput" ng-model="$ctrl.exercisesNew[$index].exeObjTimeInc" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
+              </div>  
             </div>                        
           </div>
         </li>
@@ -83,13 +84,12 @@
       <input type="submit" class="saveBtn btn btn-default" value="Save Workout">
     </div>    
     </form>    
-    <div class="col-sm-1 text-center animated bounceIn">
+    <div class="col-sm-1 text-center animated fadeInDown">
     	<div class="col-sm-6">
     		<button title="Toggle Database Exercises" id="hideDbList" ng-click="$ctrl.hideDbList()" class="btn btn-default glyphicon glyphicon-arrow-right"></button>	
-    	</div>
-    	
+    	</div>    	
     </div>
-    <div class="col-sm-4 listExercise text-center animated" id="dataList">           
+    <div class="col-sm-4 listExercise text-center animated fadeInRight" id="dataList">           
       <div class="col-xs-12">      
         <h2>Database Exercises</h2>
         <button class="saveBtn btn btn-default" ng-click="$ctrl.createExe()">Create New Exercise</button>
