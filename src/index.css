@@ -9,7 +9,7 @@ h1{
 }
 ul li{
 	list-style-type: none;
-	text-decoration: red;
+	
 }
 div{
 	padding: 3px;
@@ -163,7 +163,11 @@ input:hover, input:focus{
 		
 }
 
-.navbar{
-	background-image: url("images/bkg.jpeg");
+.btn-default{
+	background-color: cornsilk;
 }
+
+/*.navbar{
+	background-image: url("images/bkg.jpeg");
+}*/
 
