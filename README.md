@@ -1,9 +1,10 @@
 # Projet Web - AngularJS
------
+
 Ce projet a été réalisé lors d'un cours de projet Web à la HES-SO de Neuchâtel (HE-Arc).
 Le but était de démontrer la compréhension et l'utilisation de Git et AngularJS notamment.
+
 ## Demarrage rapide
------
+
 Pour démarrer facilement l'application en utilisant git : 
 ```sh
 $ git clone git@github.com:heg-web/projet-ivanb_alexandruo.git
@@ -19,8 +20,9 @@ $ grunt serve
 Ou
 $ gulp serve
 ```
+
 ## Application de gestion de programmes de fitness
------
+
 
 ### Description
 Cette application permet de manière simple et rapide de créer des programmes d'exercices physique et de les "lancer" lors de vos séances.
@@ -173,7 +175,6 @@ Au final, l'application fonctionne pour cette partie avec les Dates, à voir lor
 #### Tests
 
 Souvent dans l'application, il fallait faire des console.log() ou $log pour débeuger. Nous aurions pu chercher à faire des batteries de tests. Mais comme cela n'a pas été vu en cours, nous n'avons pas trop creusé. Il serait intéressant de voir si intégrer des tests maintenant permettrait de développer plus efficacement les futures fonctionnalitées.
-
 
 ### Future de l'application
 
