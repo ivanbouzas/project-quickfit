@@ -214,7 +214,6 @@ input:hover, input:focus{
   text-align: center;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
 }
 
 .button-start {
