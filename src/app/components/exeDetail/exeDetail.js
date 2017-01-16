@@ -7,12 +7,13 @@ function exeDetailController($http, $filter, ProgramService) {
   };
   $ctrl.$onChanges = function () {
     if (angular.isDefined($ctrl.exeDetailId)) {
-      if ($ctrl.ownExe === 0) {
+      console.log($ctrl.ownExe);
+      if ($ctrl.ownExe === '0') {
         var exercises = ProgramService.getOwnExercises();
         $ctrl.exercise = $filter('filter')(exercises, {id: $ctrl.exeDetailId})[0];
         $ctrl.category = {name: 'Own Exercise'};
         if (angular.isDefined($ctrl.exercise.description)) {
-          angular.element('#descExe').html('<strong>Description </strong>' + $ctrl.exercise.description);
+          angular.element('#descExe').html($ctrl.exercise.description);
         }
       } else {
         $http.get('https://wger.de/api/v2/exercise/' + $ctrl.exeDetailId + '/?language=2&format=json').then(function (response) {

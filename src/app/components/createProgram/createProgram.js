@@ -22,8 +22,8 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $ctrl.ishideDbList = false;
   };
   $ctrl.selectExercise = function (item, index) {
-    item.showObjectives = false;
-    $ctrl.exercisesNew.push(angular.copy(item));
+    item[index].showObjectives = false;
+    $ctrl.exercisesNew.push(angular.copy(item[index]));
     angular.element('#DbItem' + index).addClass('fadeOutLeft');
     $timeout(function () {
       angular.element('#DbItem' + index).removeClass('fadeOutLeft');
