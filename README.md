@@ -157,6 +157,10 @@ Il existe deux solutions :
 Nous avons choisi d'appliquer la dernière solution, car elle est porté vers le futur et permet à l'application d'avoir un fonctionnement plus 'léger'.
 Mais pour le site déployer sur Github malheureusement cela implique qu'on le peut pas recharger une page manuellement, sinon le service Angular en charge de l'API HTML5 ($location) perd la racine de l'application et ne peut pas retrouver le fichier index.html.
 Idéalement avec ce genre de solution il faudrait un serveur web configurable pour palier à cette perte de la 'base'.
+
+Un autre problème survenu avec le déploiement et que sur le site de Github, l'application ne s'affichait toujours pas. La raison, angular gère les fichiers styles et javascript avec un mapping qui ne fonctionne pas sur le serveur web. 
+
+Il a faut donc retirer, dans le fichier 'index.html' du dossier 'dist' après un 'build', le mot clés 'maps' ajouter au liens vers les différents fichiers.
  
 #### Date
 
