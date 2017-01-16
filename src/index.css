@@ -187,8 +187,59 @@ input:hover, input:focus{
 
 
 .navbar {
-	background-color: transparent;
-	border-radius: 0px;
+	background: linear-gradient(to right, rgba(255,0,0,0), rgba(223,1,1,1));;
+	/*border-radius: 10px;*/
+	/*border-width: 3px;*/
+	/*border-color: red;*/
 	margin-bottom: 5px;
 }
+
+#myCarousel{
+	height: 450px;
+	
+}
+
+.carousel-inner{
+	height: 430px;
+}
+
+.button-start{
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #FE2E2E;
+  border: solid 1px #FE2E2E;
+  color: white;
+  font-weight: bold;
+  box-shadow: 1px 1px 1px 1px #FE2E2E;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button-start {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-start span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-start:hover span {
+  padding-right: 25px;
+}
+
+.button-start:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 
