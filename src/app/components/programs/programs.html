@@ -1,18 +1,22 @@
 <div class="component">
-  <div class="col-sm-12 title text-center animated fadeInDown"><h1>Workout Routines</h1></div>
-  <div class="col-sm-12">    
-    <div class="col-sm-12 text-center animated fadeIn">
-      <button ui-sref="createProgram" class="btn btn-default">Create new program</button>  
-    </div>
-    <div class="col-sm-4 col-sm-offset-3 text-center animated fadeInUp">
+  <div class="row title text-center animated fadeInDown"><h1>Workout Routines</h1></div>     
+  <div class="row text-center animated fadeIn">
+    <button ui-sref="createProgram" class="btn btn-default">Create new program</button>  
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center animated fadeInUp">
       <ul ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.programs" class="list-group">
-        <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item col-sm-12 col-sm-offset-3 text-center">
-          <div class="workoutTitle col-sm-6">{{ e.title }}</div>
-          <button ui-sref="program({id:$index})" class="btn btn-default col-sm-2">Start</button>
-          <button ui-sref="createProgram({id:$index})" class="btn btn-default col-sm-2">Change</button>  
-          <button ng-click="$ctrl.deleteProgram($index)" class="btn btn-default col-sm-2">Delete</button>     
+        <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item text-center">    
+        <div class="row">
+          <div class="workoutTitle col-md-6">{{ e.title }}</div>      
+          <div class="btn-group col-md-6" role="group">
+            <button ui-sref="program({id:$index})" class="programsBtn btn btn-default">Start</button>
+            <button ui-sref="createProgram({id:$index})" class="programsBtn btn btn-default">Change</button>  
+            <button ng-click="$ctrl.deleteProgram($index)" class="programsBtn btn btn-default">Delete</button>  
+          </div>
+        </div>                             
         </li>
       </ul>  
-    </div>     
-  </div>   
+    </div>
+  </div>      
 </div>

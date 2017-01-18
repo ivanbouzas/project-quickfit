@@ -20,6 +20,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $ctrl.activeDelete = true;
     $ctrl.overBody = false;
     $ctrl.ishideDbList = false;
+    $ctrl.RadioObj = 'Reps';
   };
   $ctrl.selectExercise = function (item, index) {
     item[index].showObjectives = false;
@@ -111,15 +112,19 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $ctrl.ishideDbList = !$ctrl.ishideDbList;
     if ($ctrl.ishideDbList) {
       angular.element('#dataList').addClass('fadeOutRight');
-      angular.element('#myWOlist').removeClass('col-sm-offset-2');
-      angular.element('#myWOlist').addClass('col-sm-offset-4');
+      angular.element('#myWOlist').removeClass('col-sm-offset-1');
+      angular.element('#myWOlist').removeClass('col-sm-5');
+      angular.element('#myWOlist').addClass('col-sm-offset-3');
+      angular.element('#myWOlist').addClass('col-sm-6');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-right');
       angular.element('#hideDbList').addClass('glyphicon-arrow-left');
       angular.element('#dataList').removeClass('fadeInRight');
     } else {
       angular.element('#dataList').removeClass('fadeOutRight');
-      angular.element('#myWOlist').removeClass('col-sm-offset-4');
-      angular.element('#myWOlist').addClass('col-sm-offset-2');
+      angular.element('#myWOlist').removeClass('col-sm-offset-3');
+      angular.element('#myWOlist').removeClass('col-sm-6');
+      angular.element('#myWOlist').addClass('col-sm-offset-1');
+      angular.element('#myWOlist').addClass('col-sm-5');
       angular.element('#dataList').addClass('fadeInRight');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
       angular.element('#hideDbList').addClass('glyphicon-arrow-right');
