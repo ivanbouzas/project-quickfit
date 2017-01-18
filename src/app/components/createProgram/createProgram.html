@@ -29,21 +29,21 @@
               </div> 
             </div> 
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-5 col-xs-offset-1">
                 <label class="col-xs-4">Sets</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="number" step="1" min="1" class="exeInput form-control" name="nbSets" ng-model="$ctrl.exercisesNew[$index].nbSets" required></div>  
               </div>              
-              <div class="col-md-5 col-md-offset-1">
+              <div class="col-md-5 col-md-offset-1 col-xs-offset-1">
                 <label class="col-xs-4">Weight</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="number" step="any" min="0" name="exeUnitWeight" class="exeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   </div>
               </div>                                                                                    
             </div> 
             <div class="row">
-              <div class="col-lg-5">
+              <div class="col-lg-5 col-xs-offset-1">
                 <label class="col-xs-4">Time</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="time" step="1" name="exeUnitTime" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeUnitTime"></div>                            
               </div> 
-              <div class="col-lg-5 col-lg-offset-1">
+              <div class="col-lg-5 col-lg-offset-1 col-xs-offset-1">
                 <label class="col-xs-4">Rest period</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="time" step="1" name="exeUnitRest" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeUnitRest"></div>                            
               </div>
@@ -69,17 +69,10 @@
                   </div>
                 </form> 
               </div>              
-              <div class="row text-center">                
-                <div class="col-xs-6">
-                  <h4>Objective</h4>
-                </div>  
-                <div class="col-xs-6">
-                  <h4>Increment</h4>
-                </div>
-              </div>
               <div class="row" ng-hide="$ctrl.RadioObj === 'Time'">            
                 <div class="col-xs-6">
-                  <div class="col-xs-5">
+                  <h4>Objective</h4>
+                  <div class="col-xs-5 col-xs-offset-1">
                     <label>Reps</label>
                   </div>
                   <div class="col-xs-4">
@@ -87,6 +80,7 @@
                   </div>                  
                 </div> 
                 <div class="col-xs-6">
+                  <h4>Increment</h4>
                   <div class="col-xs-5">
                     <label>Weight</label>
                   </div>
@@ -95,23 +89,37 @@
                   </div>                                     
                 </div>                           
               </div>
-              <div class="row" ng-hide="$ctrl.RadioObj === 'Reps'">                                 
-                <div class="col-sm-6">              
-                  Time
-                  <select name="exeObjTimeType" ng-model="$ctrl.exercisesNew[$index].exeObjTimeType" ng-required="$ctrl.exercisesNew[$index].exeObjTime">
-                    <option value="plus">
-                      +
-                    </option>
-                    <option value="minus">
-                      -
-                    </option>
-                  </select>
-                  <input type="time" step="1" name="exeObjTime" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeObjTime" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
-                </div>
-               <div class="col-sm-6">
-                  Time Increment              
-                  <input type="time" step="1" name="exeObjTimeInc" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeObjTimeInc" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
-                </div>  
+              <div class="row" ng-hide="$ctrl.RadioObj === 'Reps'"> 
+                <div class="col-lg-6">
+                  <div class="col-xs-12">
+                    <h4>Objective</h4>  
+                  </div>                  
+                  <div class="col-xs-3 col-xs-offset-1">
+                    <label>Time</label>
+                  </div>
+                  <div class="col-xs-6 col-xs-offset-1">                                                              
+                      <select class="pull-left" name="exeObjTimeType" ng-model="$ctrl.exercisesNew[$index].exeObjTimeType" ng-required="$ctrl.exercisesNew[$index].exeObjTime" id="SelectPlusMinus">
+                        <option value="plus">
+                          +
+                        </option>
+                        <option value="minus">
+                          -
+                        </option>
+                      </select>
+                      <input type="time" step="1" name="exeObjTime" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeObjTime" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">                     
+                  </div>                  
+                </div> 
+                <div class="col-lg-6">
+                  <div class="col-xs-12">
+                    <h4>Increment</h4>
+                  </div>
+                  <div class="col-xs-3 col-xs-offset-1">
+                    <label>Time Increment</label>
+                  </div>
+                  <div class="col-xs-5 col-xs-offset-1">
+                     <input type="time" step="1" name="exeObjTimeInc" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeObjTimeInc" ng-required="$ctrl.exercisesNew[$index].exeObjTimeType">
+                  </div>                                     
+                </div>                           
               </div>                        
             </div>
           </div>          
@@ -125,32 +133,42 @@
     </div>
     <div class="col-sm-4 listExercise text-center animated fadeInRight" id="dataList">           
       <div class="row">      
-        <h2>Database Exercises</h2>
-        <button class="saveBtn btn btn-default" ng-click="$ctrl.createExe()">Create New Exercise</button>
-        <div>          
-          <label>Search <input type="textbox" name="Search" ng-model="$ctrl.searchText"></label>
-          <strong>Categories</strong>
-          <select id="catList" name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
-            <option ng-repeat="cat in $ctrl.categories track by $index" value="{{cat.id}}">
-              {{cat.name}}
-            </option>
-            <option value="0">
-              Own Exercises
-            </option>
-         </select>
-        </div>
-      </div>          
-      <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
-        <li ng-repeat="item in $ctrl.exercises | filter:$ctrl.searchText track by $index" class="item list-group-item row animated" id="DbItem{{$index}}">
-          <div class="DbBtn col-xs-4">
-            <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise($ctrl.exercises | filter:$ctrl.searchText, $index)"></span>
-            <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
-            <span title="Delete" class="btn btn-default glyphicon glyphicon-trash" ng-click="$ctrl.deleteExe($index)" ng-hide="$ctrl.activeDelete"></span>
+        <div class="col-xs-12"><h2>Database Exercises</h2></div>
+        <div class="col-xs-12"><button class="saveBtn btn btn-default" ng-click="$ctrl.createExe()">Create New Exercise</button></div>
+        <div class="col-xs-12">          
+          <div class="col-lg-6">
+            <label>Search<input class="form-control" type="textbox" name="Search" ng-model="$ctrl.searchText"></label>
           </div>
-          <div class="itemName col-xs-7 col-xs-offset-1">{{item.name}}</div>    
-        </li>
-      </ul>
-      <button id="affPlusBtn" class="btn btn-default" ng-click="$ctrl.afficherPlus()" ng-hide="$ctrl.selectedCat == 0">Afficher plus</button>      
+          <div class="col-lg-6">
+            <label>Categories
+              <select id="catList" class="form-control" name="categories" ng-model="$ctrl.selectedCat" ng-change="$ctrl.changeCat()">
+                <option ng-repeat="cat in $ctrl.categories track by $index" value="{{cat.id}}">
+                  {{cat.name}}
+                </option>
+                <option value="0">
+                  Own Exercises
+                </option>
+             </select>  
+           </label>
+          </div>                  
+        </div>
+      </div>    
+      <div class="row">
+        <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
+          <li ng-repeat="item in $ctrl.exercises | filter:$ctrl.searchText track by $index" class="item list-group-item row animated" id="DbItem{{$index}}">
+            <div class="row">
+              <div class="DbBtn col-xs-4">
+                <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise($ctrl.exercises | filter:$ctrl.searchText, $index)"></span>
+                <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
+                <span title="Delete" class="btn btn-default glyphicon glyphicon-trash" ng-click="$ctrl.deleteExe($index)" ng-hide="$ctrl.activeDelete"></span>
+              </div>
+              <div class="itemName col-xs-5 col-xs-offset-1">{{item.name}}</div>
+            </div>                
+          </li>
+        </ul>
+        <button id="affPlusBtn" class="btn btn-default" ng-click="$ctrl.afficherPlus()" ng-hide="$ctrl.selectedCat == 0">Afficher plus</button> 
+      </div>      
+           
     </div>    
   </div>
 <div id="overBody" class="row" ng-show="$ctrl.overBody" ></div>
