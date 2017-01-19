@@ -3,28 +3,37 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
   var doneExercises = [];
   $ctrl.$onInit = function () {
     $ctrl.program = ProgramService.getPrograms()[$stateParams.id];
+    // gestion dynamique des class de chaque exercice
+    // permet d'afficher des bordures différentes
     $ctrl.resumeClass = [];
+    // Boolean, affichage du texte 'Objectif exceeded'
     $ctrl.showObjectiveTxt = [];
+    // true si la routine est terminée
     $ctrl.resume = false;
   };
   $ctrl.nextSet = function (index, exercise) {
-    exercise.time = exercise.time === null ? undefined : new Date(exercise.time);
+    var date = new Date(-3600000);
+    exercise.time = exercise.time === null ? date : new Date(exercise.time);
     doneExercises.push(exercise);
+    // Gestion d'un exercice avec plusieurs séries
+    // Animation pour le prochaine exercice
     if ($ctrl.program.exercises[index].nbSets === 1) {
       $ctrl.program.exercises.splice(index, 1);
       if ($ctrl.program.exercises.length !== 0) {
         angular.element('#exercise' + index).addClass('bounce');
         $timeout(function () {
           angular.element('#exercise' + index).removeClass('bounce');
-        }, 520);
+        }, 800);
       }
     } else {
       $ctrl.program.exercises[index].nbSets -= 1;
     }
+    // Gestion des objectifs, ajout dynamique de class
     if ($ctrl.program.exercises.length === 0) {
       $ctrl.resume = true;
       var oldprogram = ProgramService.getPrograms()[$stateParams.id];
       angular.forEach(oldprogram.exercises, function (value, key) {
+        // Compare les 'Reps' avec la séance précédente
         if (angular.isDefined(value.reps)) {
           doneExercises[key].diffrepsOldNew = value.reps - doneExercises[key].reps;
           if (value.reps > doneExercises[key].reps) {
@@ -35,6 +44,8 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
             $ctrl.resumeClass[key] = 'better';
           }
         }
+        // Compare 'Time' avec la séance précédente
+        // Suivant le type d'objectif fixé
         if (angular.isDefined(value.time)) {
           if (angular.isDefined(value.exeObjTimeType)) {
             if (value.exeObjTimeType === 'plus') {
@@ -56,6 +67,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
             }
           }
         }
+        // Si objectif pour 'Reps' atteint
         if (angular.isDefined(value.exeObjRep)) {
           if (doneExercises[key].reps >= value.exeObjRep) {
             doneExercises[key].exeUnitWeight += doneExercises[key].exeObjWeightInc;
@@ -63,6 +75,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
             $ctrl.showObjectiveTxt[key] = true;
           }
         }
+        // Si objectif pour 'Time' atteint
         if (angular.isDefined(value.exeObjTime)) {
           if (value.exeObjTimeType === 'plus') {
             if (doneExercises[key].time >= value.exeObjTime) {
@@ -79,6 +92,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
           }
         }
       });
+      // Affiche le résumé de la séance
       $ctrl.program.exercises = doneExercises;
     }
   };

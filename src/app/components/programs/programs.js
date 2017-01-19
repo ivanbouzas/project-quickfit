@@ -2,6 +2,7 @@ function programsController(ProgramService, $window) {
   var $ctrl = this;
   $ctrl.programs = ProgramService.getPrograms();
   $ctrl.sortableOptions = {
+    // Lance une sauvegarde après avoir changer la place d'un programme par drag/drop
     stop: function () {
       ProgramService.savePrograms($ctrl.programs);
     }

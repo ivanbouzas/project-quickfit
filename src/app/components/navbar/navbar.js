@@ -1,6 +1,4 @@
 function navbarController() {
-  var $ctrl = this;
-  $ctrl.text = 'navbar';
 }
 
 angular

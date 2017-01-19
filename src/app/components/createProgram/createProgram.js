@@ -2,6 +2,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   var $ctrl = this;
   $ctrl.$onInit = function () {
     $ctrl.exercisesNew = [];
+    // Récuperation de données depuis l'api wger
     $http.get('https://wger.de/api/v2/exercise/?language=2&format=json').then(function (response) {
       $ctrl.data = angular.fromJson(response.data);
       $ctrl.exercises = angular.fromJson(response.data.results);
@@ -9,6 +10,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $http.get('https://wger.de/api/v2/exercisecategory/?format=json').then(function (response) {
       $ctrl.categories = angular.fromJson(response.data.results);
     });
+    // Si modifier une routine
     if (angular.isDefined($stateParams.id)) {
       $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
       $ctrl.programTitle = $ctrl.oldProgram.title;
@@ -17,6 +19,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
         value.showObjectives = false;
       });
     }
+    // Initialize les variables pour l'affichage ou non de certains boutons
     $ctrl.activeDelete = true;
     $ctrl.overBody = false;
     $ctrl.ishideDbList = false;
@@ -34,6 +37,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
   };
+  // Dans la routine crée, permet de changer l'ordre de la liste
   $ctrl.HighlowChange = function (index, item, change) {
     $ctrl.exercisesNew.splice(index, 1);
     if (change) {
@@ -56,15 +60,18 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     ProgramService.savePrograms(programs);
     $state.go('programs');
   };
+  // Ouvre un pop up avec le component exeDetail
   $ctrl.getDetail = function (index) {
     $ctrl.exeDetailId = index;
     angular.element('#popDetailExe').css('display', 'block');
     $ctrl.showHideOverBody();
   };
+  // Ouvre un pop up avec le component newExe
   $ctrl.createExe = function () {
     angular.element('#popNewExe').css('display', 'block');
     $ctrl.showHideOverBody();
   };
+  // Va chercher plus d'exercices dans l'api
   $ctrl.afficherPlus = function () {
     $ctrl.query = $ctrl.data.next;
     $http.get($ctrl.query + '&format=json').then(function (response) {
@@ -75,6 +82,8 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       }
     });
   };
+  // La modification de la catégorie déclenche une nouvel requête à l'api
+  // ou va chercher les exercices crée par l'utilisateur en locale
   $ctrl.changeCat = function () {
     if (parseInt($ctrl.selectedCat, 10) === 0 || angular.isUndefined($ctrl.selectedCat)) {
       angular.element('#affPlusBtn').css('display', 'none');
@@ -95,6 +104,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       ProgramService.saveOwnExercises($ctrl.exercises);
     }
   };
+  // Ouvre la partie objectif d'un exercice selectionné pour la routine
   $ctrl.showObjectives = function (index) {
     $ctrl.exercisesNew[index].showObjectives = !$ctrl.exercisesNew[index].showObjectives;
     if ($ctrl.exercisesNew[index].showObjectives) {
@@ -105,9 +115,11 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       }, 500);
     }
   };
+  // met un fond sur le body lorsqu'un pop up s'affiche
   $ctrl.showHideOverBody = function () {
     $ctrl.overBody = !$ctrl.overBody;
   };
+  // gère l'animation de décalage de la routine au centre de l'écran
   $ctrl.hideDbList = function () {
     $ctrl.ishideDbList = !$ctrl.ishideDbList;
     if ($ctrl.ishideDbList) {

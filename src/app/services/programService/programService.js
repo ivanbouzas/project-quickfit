@@ -1,5 +1,7 @@
 function ProgramService() {
+  // clé pour la sauvegarde des routines
   var pKey = 'programs';
+  // clé pour la sauvegarde des exercices crées
   var pKeyPerso = 'FitPersoExercises';
   var programs = [];
   var OwnExercises = [];
