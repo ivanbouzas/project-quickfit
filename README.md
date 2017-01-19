@@ -88,6 +88,25 @@ Ainsi que différentes recherches lors de problèmes ou de solutions cherchées.
 
 Une bonne partie du projet a dû être abandonnée, car le temps d'apprentissage a été long, tant bien même que cela avait été en partie vu pendant le cours cité pour la réalisation de ce projet.
 
+#### Structure de l'application
+
+L'application contient, pour le moment, les components suivants :
+
+- Programs : Affiche les différentes routines crées dans l'application
+- Program : Permet de 'lancer' une séance, entrer sa performance
+- CreateProgram : Permet la création d'une routine en récuperant une liste d'exercices ou en créant ses propres exercices
+- NavBar : Barre de navigation qui redirige vers les principales fonctionnalitées
+- ExeDetail : Affiche le détail d'un exercice, utilisé comme Pop up dans CreateProgram
+- ExeNew : Permet de créer un nouvel exercice, utilisé comme Pop up dans CreateProgram
+
+Il a été jugé inutile de faire un component qui représenterai un 'Exercice', car, mise à part le nom, il est à chaque fois affiché de manière différente dans l'application et donc peu, voire pas, répétable. Nous avons préféré directement traiter l'affichage des exercices dans les components utiles.
+Un service, ProgramService, gère la persistance et la récupération des données locale
+
+Dans les controllers AngularJS, le scope est accessible via la variable '$ctrl'
+
+Tous les styles personalisés sont rassemblés dans le fichier 'index.css' à la racine de '/src'.
+Le dossier 'images', dans '/src', contient toutes celles utilisées dans l'application.
+
 #### Fonctionnalités actuelles
 
 L'application contient actuellement la partie de gestion des routines.
