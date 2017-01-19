@@ -9,7 +9,7 @@
         <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item text-center">    
         <div class="row">
           <div class="workoutTitle col-md-6">{{ e.title }}</div>      
-          <div class="btn-group col-md-6" role="group">
+          <div class="btn-group col-md-6 col-lg-5 col-lg-offset-1" role="group">
             <button ui-sref="program({id:$index})" class="programsBtn btn btn-default">Start</button>
             <button ui-sref="createProgram({id:$index})" class="programsBtn btn btn-default">Change</button>  
             <button ng-click="$ctrl.deleteProgram($index)" class="programsBtn btn btn-default">Delete</button>  

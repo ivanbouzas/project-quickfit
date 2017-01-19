@@ -131,7 +131,6 @@ input:hover, input:focus{
   height: 95%;
   overflow: auto;
 }
-
 .image{
   margin-left: 250px;
 }
@@ -141,9 +140,8 @@ input:hover, input:focus{
   border: solid 1px #b71c1c;
   color: white;
   font-weight: bold;
-  box-shadow: 1px 1px 1px 1px ;
+  box-shadow: 1px 1px 2px 1px #b71c1c;
 }
-
 .title{
   background-color: #b71c1c;
   color: white;
@@ -157,40 +155,17 @@ input:hover, input:focus{
 }*/
 .navbar {
 	background: linear-gradient(to right, rgba(255,0,0,0), #b71c1c);;
-	/*border-radius: 10px;*/
-	/*border-width: 3px;*/
-	/*border-color: red;*/
+	border-radius: 0px;
+  left: 6px;
 	margin-bottom: 5px;
 }
-
-#myCarousel{
-	height: 450px;
-}
-
-.carousel-inner{
-	height: 430px;
-}
-
-.button-start{
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #b71c1c;
-  border: solid 1px #b71c1c;
-  color: white;
-  font-weight: bold;
-  box-shadow: 1px 1px 1px 1px #b71c1c;
-  text-align: center;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
 .button-start {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
+  font-size: 18px;
 }
-
 .button-start span:after {
   content: '\00bb';
   position: absolute;
@@ -199,11 +174,9 @@ input:hover, input:focus{
   right: -20px;
   transition: 0.5s;
 }
-
 .button-start:hover span {
   padding-right: 25px;
 }
-
 .button-start:hover span:after {
   opacity: 1;
   right: 0;
@@ -215,4 +188,7 @@ input:hover, input:focus{
   border-radius:0%;
 }
 #SelectPlusMinus{
+}
+.carousel-inner{
+
 }
