@@ -8,14 +8,18 @@ function programController(ProgramService, $stateParams, $state) {
     $ctrl.resume = false;
   };
 
-  $ctrl.nextSet = function (index, exercise) {
+  $ctrl.nextSet = function (index, exercise) {    
     exercise.time = exercise.time === null ? undefined : new Date(exercise.time);
     doneExercises.push(exercise);
-    if ($ctrl.program.exercises[index].nbSets === 1) {
+    if ($ctrl.program.exercises[index].nbSets === 1) {          
       $ctrl.program.exercises.splice(index, 1);
+      if ($ctrl.program.exercises.length !== 0) {
+        angular.element('#exercise' + index).addClass('bounce');
+        setTimeout(function () {angular.element('#exercise' + index).removeClass('bounce'); }, 520);  
+      }      
     } else {
-      $ctrl.program.exercises[index].nbSets -= 1;
-    }
+      $ctrl.program.exercises[index].nbSets -= 1;      
+    }    
     if ($ctrl.program.exercises.length === 0) {
       $ctrl.resume = true;
       var oldprogram = ProgramService.getPrograms()[$stateParams.id];
@@ -75,7 +79,7 @@ function programController(ProgramService, $stateParams, $state) {
         }
       });
       $ctrl.program.exercises = doneExercises;
-    }
+    }    
   };
   $ctrl.saveCompletedProg = function () {
     ProgramService.saveProgramById($ctrl.program, $stateParams.id);
