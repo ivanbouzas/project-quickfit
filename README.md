@@ -127,6 +127,12 @@ Gulp enlevait aussi par défaut la dépendance a Bootstrap pour ses fichiers de 
 Il a fallu aller dans le fichier de configurations de gulp dans le dossier 'conf' du projet et enlever le 'exlude' sous 'exports.wiredep' qui est le module qui 'inject' les dépendances dans le fichier index.html.
 Le fichier de dépendances avec bower a aussi été modifié avec une propriété 'resolution' qui pointe sur boostrap.
 
+#### ui-sortable
+
+Pour notre application, nous avons implémenter un plugin Angular permettant de faire un drag&drop sur les éléments d'une liste pour changer leur position dans cette liste. Le but de départ était de pouvoir crée son entrainement en faisant soit des drag&drop d'une liste à l'autre, soit de cliquer sur un bouton ajout.
+
+Malheureusement, après moulte recherche sur le web, bien que le drag&drop fonctionne sur une liste elle-même, pour une raison qu'il nous ait inconnu, il n'est pas possible de passer d'une liste à une autre, apparement à cause d'Angular.
+
 #### Git
 
 Un problème recurant avec l'utilisation de git étant le fameux 'end-of-line' CRLF ou LF.
