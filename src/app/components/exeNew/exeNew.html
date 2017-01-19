@@ -1,25 +1,32 @@
 <div class="component">
-  <div id="popNewExe" class="popNewExe col-sm-4 col-sm-offset-4 col-xs-12 animated fadeIn">
-    <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove col-xs-12"></button>
-  <div class="popScroll col-xs-12">
-    <div class="col-xs-12 title text-center">      
-      <h2>New Exercise</h2>
+  <div class="row">
+    <div id="popNewExe" class="popNewExe col-sm-6 col-sm-offset-3 col-xs-12 animated fadeIn">        
+    <div class="popScroll">
+      <div class="row">
+        <div class="col-xs-12 title text-center">      
+          <h2>New Exercise</h2>
+          <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove "></button>
+        </div>
+      </div>      
+      <div class="row poplgn">         
+          <div class="col-sm-4 col-sm-offset-1"><label>Exercise Name</label> </div> 
+          <div class="col-sm-5 col-sm-offset-1"><input id="newExeName" type="textbox" class="form-control" ng-model="$ctrl.exercise.name" name="exeName" required="required"></div>
+      </div>
+      <div class="row poplgn">
+        <div class="col-sm-4 col-sm-offset-1"><label>Category</label></div> 
+        <div class="col-sm-6 col-sm-offset-1">Own Exercise</div>
+      </div>
+      <div class="row poplgn">
+         <div class="col-xs-11 col-sm-offset-1"><label>Description</label></div> 
+         <div class="col-xs-10"><textarea class="col-xs-11 col-sm-offset-1 form-control" rows="5" ng-model="$ctrl.exercise.description"></textarea></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-offset-4">
+          <button class="saveBtn btn btn-default col-xs-12" ng-click="$ctrl.savePersoExe()">Save new exercise</button>
+        </div>  
+      </div>            
     </div>
-    <div class="poplgn col-xs-12">    	    
-      <div class="col-sm-4"><strong>Exercise Name</strong> </div> 
-      <div class="col-sm-7 col-sm-offset-1"><input id="newExeName" type="textbox" ng-model="$ctrl.exercise.name" name="exeName" required="required"></div>
-    </div>
-    <div class="poplgn col-xs-12">
-      <div class="col-sm-4"><strong>Category</strong></div> 
-      <div class="col-sm-7 col-sm-offset-1">Own Exercise</div>
-    </div>
-    <div class="poplgn col-xs-12">
-       <strong>Description<br></strong>
-       <textarea class="col-xs-12" rows="5" ng-model="$ctrl.exercise.description"></textarea>
-    </div> 
-    <div class="col-xs-12">
-      <button class="saveBtn btn btn-default col-xs-12" ng-click="$ctrl.savePersoExe()">Save new exercise</button>
-    </div>          
   </div>
   </div>
+  
 </div>
