@@ -114,7 +114,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       angular.element('#dataList').addClass('fadeOutRight');
       angular.element('#myWOlist').removeClass('col-sm-offset-1');
       angular.element('#myWOlist').addClass('col-sm-offset-3');
-      angular.element('#myWOlist').removeClass('col-sm-5');      
+      angular.element('#myWOlist').removeClass('col-sm-5');
       angular.element('#myWOlist').addClass('col-sm-6');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-right');
       angular.element('#hideDbList').addClass('glyphicon-arrow-left');
@@ -123,7 +123,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       angular.element('#dataList').removeClass('fadeOutRight');
       angular.element('#myWOlist').removeClass('col-sm-offset-3');
       angular.element('#myWOlist').addClass('col-sm-offset-1');
-      angular.element('#myWOlist').removeClass('col-sm-6');      
+      angular.element('#myWOlist').removeClass('col-sm-6');
       angular.element('#myWOlist').addClass('col-sm-5');
       angular.element('#dataList').addClass('fadeInRight');
       angular.element('#hideDbList').removeClass('glyphicon-arrow-left');
