@@ -29,6 +29,10 @@ input:hover, input:focus{
 ul li{
   list-style-type: none;  
 }
+html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .animated{
   animation-duration: 0.8s;
 }
@@ -124,11 +128,11 @@ ul li{
   font-size: 24px;
 }
 .DbBtn .btn{
-  float: right;
 }
 .popScroll{
   height: 95%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .image{
   margin-left: 250px;
@@ -137,11 +141,12 @@ ul li{
   background-color: #b71c1c;
   color: white;
   margin-bottom: 20px;
+  padding: 5px;
 }
 .navbar{
 	background: linear-gradient(to right, rgba(255,0,0,0), #b71c1c);;
 	border-radius: 0px;
-  left: 6px;
+  padding: 5px;
 	margin-bottom: 5px;
 }
 .button-start{
