@@ -153,12 +153,14 @@
         <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercises" class="list-group">
           <li ng-repeat="item in $ctrl.exercises | filter:$ctrl.searchText track by $index" class="item list-group-item row animated" id="DbItem{{$index}}">
             <div class="row">
-              <div class="DbBtn col-xs-4">
-                <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise($ctrl.exercises | filter:$ctrl.searchText, $index)"></span>
-                <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
-                <span title="Delete" class="btn btn-default glyphicon glyphicon-trash" ng-click="$ctrl.deleteExe($index)" ng-hide="$ctrl.activeDelete"></span>
-              </div>
-              <div class="itemName col-xs-5 col-xs-offset-1">{{item.name}}</div>
+	            <div class="col-xs-6 col-sm-7 col-md-6">
+	            	<div class="btn-group" role="group">
+		                <span title="Add to workout" class="btn btn-default glyphicon glyphicon-plus" ng-click="$ctrl.selectExercise($ctrl.exercises | filter:$ctrl.searchText, $index)"></span>
+		                <span title="Detail" class="btn btn-default glyphicon glyphicon-fullscreen" ng-click="$ctrl.getDetail(item.id)"></span>
+		                <span title="Delete" class="btn btn-default glyphicon glyphicon-trash" ng-click="$ctrl.deleteExe($index)" ng-hide="$ctrl.activeDelete"></span>
+		            </div>
+	            </div>	              
+              <div class="itemName col-xs-6 col-sm-5 col-md-6">{{item.name}}</div>
             </div>                
           </li>
         </ul>
