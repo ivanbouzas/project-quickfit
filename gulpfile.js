@@ -42,7 +42,7 @@ var deploy = require('gulp-deploy-git');
 gulp.task('deploy', function() {
 return gulp.src('**/*', { read: false, cwd: 'dist' })
 .pipe(deploy({
-repository: 'git@github.com:heg-web/projet-ivanb_alexandruo.git',
+repository: 'git@github.com:ivanbouzas/project-quickfit.git',
 remoteBranch: 'gh-pages'
 }))
 });
