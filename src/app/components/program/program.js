@@ -23,7 +23,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
         angular.element('#exercise' + index).addClass('bounce');
         $timeout(function () {
           angular.element('#exercise' + index).removeClass('bounce');
-        }, 800);
+        }, 650);
       }
     } else {
       $ctrl.program.exercises[index].nbSets -= 1;

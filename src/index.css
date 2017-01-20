@@ -34,7 +34,7 @@ html, body{
     overflow-x: hidden;
 }
 .animated{
-  animation-duration: 0.8s;
+  animation-duration: 0.65s;
 }
 .form-control{
   border-radius:0%;
