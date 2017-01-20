@@ -1,12 +1,6 @@
 function programsController(ProgramService, $window) {
   var $ctrl = this;
   $ctrl.programs = ProgramService.getPrograms();
-  $ctrl.sortableOptions = {
-    // Lance une sauvegarde après avoir changer la place d'un programme par drag/drop
-    stop: function () {
-      ProgramService.savePrograms($ctrl.programs);
-    }
-  };
   $ctrl.deleteProgram = function (index) {
     if ($window.confirm('Are you sure to delete this workout ?')) {
       $ctrl.programs.splice(index, 1);
