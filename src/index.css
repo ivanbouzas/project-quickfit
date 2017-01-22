@@ -107,13 +107,13 @@ html, body{
   transition: 0.5s all;
 }
 .better{
-  box-shadow: 1px 1px 1px 2px green;
+  box-shadow: 1px 1px 4px 2px green;
 }
 .same{
-  box-shadow: 1px 1px 1px 2px lightgrey;
+  box-shadow: 1px 1px 4px 2px lightgrey;
 }
 .worse{
-  box-shadow: 1px 1px 1px 2px yellow;
+  box-shadow: 1px 1px 4px 2px yellow;
 }
 .objectiveTxt{
   color: green;

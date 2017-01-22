@@ -68,7 +68,8 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
           }
         }
         // Si objectif pour 'Reps' atteint
-        if (angular.isDefined(value.exeObjRep)) {
+        if (angular.isDefined(value.exeObjRep) && value.exeObjRep !== null) {
+          console.log(value.exeObjRep);
           if (doneExercises[key].reps >= value.exeObjRep) {
             doneExercises[key].exeUnitWeight += doneExercises[key].exeObjWeightInc;
             $ctrl.resumeClass[key] = 'better objective';
@@ -76,7 +77,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
           }
         }
         // Si objectif pour 'Time' atteint
-        if (angular.isDefined(value.exeObjTime)) {
+        if (angular.isDefined(value.exeObjTime) && value.exeObjTime !== -3600000) {
           if (value.exeObjTimeType === 'plus') {
             if (doneExercises[key].time >= value.exeObjTime) {
               doneExercises[key].exeObjTime.setTime(doneExercises[key].exeObjTime.getTime() + (value.exeObjTimeInc - new Date(-3600000)));
