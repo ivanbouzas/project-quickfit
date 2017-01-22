@@ -57,7 +57,7 @@ html, body{
 }
 .item, .itemProgram{  
   border-radius: 0px;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   border: none;
   border-bottom: solid 1px #D32F2F;
 }
@@ -67,6 +67,7 @@ html, body{
 .item:hover, .itemProgram:hover{
   transition: 0.2s all ease;    
   box-shadow: 1px 1px 1px 3px #D32F2F;
+  z-index: 3;
 }
 .itemName{
   font-weight: bold;
@@ -114,19 +115,21 @@ html, body{
 .better, .same, .worse{
   transition: 0.5s all;
 }
-.better{
-  box-shadow: 1px 1px 4px 2px green;
+.better, .better:first-child{
+  background-color: #81C784;
 }
-.same{
-  box-shadow: 1px 1px 4px 2px lightgrey;
+.same, .same:first-child{
+  background-color: #E0E0E0;
 }
-.worse{
-  box-shadow: 1px 1px 4px 2px yellow;
+.worse, .worse:first-child{
+  background-color: #FF8A80;
 }
 .objectiveTxt{
-  color: green;
+  color: white;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+  background-color: #43A047;
+  padding: 10px;
 }
 .homeBtn{
   font-size: 24px;
