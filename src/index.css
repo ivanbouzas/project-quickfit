@@ -12,18 +12,8 @@ div{
 h1{
   font-weight: bold;
 }
-hr{
-  width: 100%;
-  display: block;
-  margin-top: 30px;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
-}
-input:hover, input:focus{
-  box-shadow: 1px 1px 4px 2px #FFC400; 
+input:hover{
+  box-shadow: 1px 1px 4px 2px #FFD740; 
 }
 ul li{
   list-style-type: none;  
@@ -37,9 +27,14 @@ html, body{
 }
 .form-control{
   border-radius:0%;
+  border-color: #FFD740;
 }
 .btn-default{
   background-color: #FFE57F;
+}
+.btn{
+  border-radius: 0px;
+  border-color: #FFE57F;
 }
 .btn:hover{
   transition: 0.5s;
@@ -54,12 +49,17 @@ html, body{
   transition: 0.5s all ease;
 }
 .item, .itemProgram{  
-  margin-bottom: 4px;
-  border: solid 0px #FF5252;
+  border-radius: 0px;
+  margin-bottom: 2px;
+  border: none;
+  border-bottom: solid 1px #D32F2F;
+}
+.itemProgram:first-child{
+  background-color: #FFD740;
 }
 .item:hover, .itemProgram:hover{
   transition: 0.2s all ease;    
-  box-shadow: 1px 1px 1px 3px #FFC400;
+  box-shadow: 1px 1px 1px 3px #D32F2F;
 }
 .itemName{
   font-style: italic;
@@ -188,4 +188,8 @@ html, body{
   padding: 20px;
   top: -5px;
   left: -5px;
+}
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }

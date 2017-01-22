@@ -1,8 +1,6 @@
 <div class="component">
   <div class="row title text-center animated fadeInDown"><h1>Workout Routines</h1></div>     
-  <div class="row text-center animated fadeIn">
-    <button ui-sref="createProgram" class="btn btn-default">Create new program</button>  
-  </div>
+  
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 text-center animated fadeInUp">
       <ul ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.programs" class="list-group">
@@ -18,5 +16,8 @@
         </li>
       </ul>  
     </div>
-  </div>      
+  </div> 
+  <div class="row text-center animated fadeInUp">
+    <button ui-sref="createProgram" class="btn btn-default">Create new program</button>  
+  </div>     
 </div>
