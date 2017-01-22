@@ -23,8 +23,7 @@ hr{
   border-width: 1px;
 }
 input:hover, input:focus{
-  transition: 0.1s all ease;
-  box-shadow: 1px 1px 4px 2px lightgrey; 
+  box-shadow: 1px 1px 4px 2px #FFC400; 
 }
 ul li{
   list-style-type: none;  
@@ -40,15 +39,14 @@ html, body{
   border-radius:0%;
 }
 .btn-default{
-  background-color: cornsilk;
+  background-color: #FFE57F;
 }
 .btn:hover{
   transition: 0.5s;
-  background-color: #b71c1c;
-  border: solid 1px #b71c1c;
+  background-color: #D32F2F;
+  border: solid 1px #D32F2F;
   color: white;
-  font-weight: bold;
-  box-shadow: 1px 1px 2px 1px #b71c1c;
+  box-shadow: 1px 1px 2px 1px #D32F2F;
 }
 .listExercise{
   min-height: 50px;
@@ -57,10 +55,11 @@ html, body{
 }
 .item, .itemProgram{  
   margin-bottom: 4px;
+  border: solid 0px #FF5252;
 }
-.item:hover{
+.item:hover, .itemProgram:hover{
   transition: 0.2s all ease;    
-  box-shadow: 1px 1px 1px 3px #b71c1c;
+  box-shadow: 1px 1px 1px 3px #FFC400;
 }
 .itemName{
   font-style: italic;
@@ -83,7 +82,7 @@ html, body{
   padding: 20px;
   z-index: 3;
   height: 80%;
-  box-shadow: 1px 2px 10px 3px #b71c1c;
+  box-shadow: 1px 2px 10px 3px #FFC400;
   max-height: 500px;
 }
 .popImg{
@@ -142,12 +141,20 @@ html, body{
   color: white;
   margin-bottom: 20px;
   padding: 5px;
+  margin-top: -6px;
 }
 .navbar{
-	background: linear-gradient(to right, rgba(255,0,0,0), #b71c1c);;
+	background: #D32F2F;
 	border-radius: 0px;
   padding: 5px;
-	margin-bottom: 5px;
+	margin: -6px;
+
+}
+.nav b{
+  color: white;
+}
+.nav b:hover{
+  color: #FFE57F;
 }
 .button-start{
   cursor: pointer;
