@@ -69,7 +69,6 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
         }
         // Si objectif pour 'Reps' atteint
         if (angular.isDefined(value.exeObjRep) && value.exeObjRep !== null) {
-          console.log(value.exeObjRep);
           if (doneExercises[key].reps >= value.exeObjRep) {
             doneExercises[key].exeUnitWeight += doneExercises[key].exeObjWeightInc;
             $ctrl.resumeClass[key] = 'better objective';
