@@ -4,13 +4,19 @@ html{
 body{  
   background-color: #FFFFFF;
   font-family: 'Segoe UI';
-  font-size: 16px;
+  font-size: 18px;
 }
 div{
   padding: 3px;
 }
 h1{
   font-weight: bold;
+}
+input[type="number"]{
+  font-size: 18px;
+}
+input[type="time"]{
+  font-size: 18px;
 }
 input:hover{
   box-shadow: 1px 1px 4px 2px #FFD740; 
@@ -35,6 +41,7 @@ html, body{
 .btn{
   border-radius: 0px;
   border-color: #FFE57F;
+  font-size: 16px;
 }
 .btn:hover{
   transition: 0.5s;
@@ -62,10 +69,12 @@ html, body{
   box-shadow: 1px 1px 1px 3px #D32F2F;
 }
 .itemName{
+  font-weight: bold;
+  font-size: 22px;
   font-style: italic;
 }
 .saveBtn{
-  width: 150px;
+  width: 180px;
   margin-bottom: 10px;
   padding: 5px;
 }
@@ -118,10 +127,6 @@ html, body{
   color: green;
   font-weight: bold;
   font-size: 16px;
-}
-.workoutTitle{
-  font-size: 18px;
-  font-weight: bold;
 }
 .homeBtn{
   font-size: 24px;

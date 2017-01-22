@@ -6,7 +6,7 @@
       <ul ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.programs" class="list-group">
         <li ng-repeat="e in $ctrl.programs track by $index" class="item list-group-item text-center">    
         <div class="row">
-          <div class="workoutTitle col-md-6">{{ e.title }}</div>      
+          <div class="itemName col-md-6">{{ e.title }}</div>      
           <div class="btn-group col-md-6 col-lg-5 col-lg-offset-1" role="group">
             <button ui-sref="program({id:$index})" class="programsBtn btn btn-default">Start</button>
             <button ui-sref="createProgram({id:$index})" class="programsBtn btn btn-default">Change</button>  
