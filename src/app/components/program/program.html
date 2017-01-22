@@ -8,7 +8,7 @@
             <div class="row" >
               <h4 class="itemName text-center col-xs-12">{{item.name}}</h4>              
               <div class="col-xs-12 text-center" ng-hide="item.nbSets === 1"><label>Sets left</label> {{item.nbSets}}</div>
-              <div class="col-xs-5 col-xs-offset-1">
+              <div class="col-xs-6 col-sm-5 col-sm-offset-1">
                 <div class="col-xs-6" >
                   <label>Weight</label>   
                 </div>
@@ -24,7 +24,7 @@
                   {{item.exeUnitTime | date : 'HH:mm:ss'}}  
                 </div>                              
               </div>
-              <div class="col-xs-5 col-xs-offset-1" ng-hide="$index != 0 || $ctrl.resume">
+              <div class="col-xs-6 col-sm-5 col-sm-offset-1" ng-hide="$index != 0 || $ctrl.resume">
                 <div class="col-xs-6">
                   <label>Reps</label>  
                 </div>                
