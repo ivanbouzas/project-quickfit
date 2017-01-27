@@ -11,6 +11,7 @@ div{
 }
 h1{
   font-weight: bold;
+  padding: 0px 15px;
 }
 input[type="number"]{
   font-size: 18px;
@@ -200,4 +201,38 @@ html, body{
 .list-group-item:first-child {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+.navbar-default .navbar-toggle:focus {
+    background-color: #FFE57F;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0px;
+}
+.navbar-collapse {
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: visible;
+    -webkit-overflow-scrolling: touch;
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: inset 0 0px 0 #FFE57F;
+    box-shadow: inset 0 0px 0 #FFE57F;
+}
+.nav {
+    padding-left: 20px;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #FFE57F;
+    background-color: transparent;    
+}
+.navbar-default .navbar-nav>li>a:hover {
+    border-bottom: 3px solid #FFE57F;
+    margin-bottom: -3px;  
 }
