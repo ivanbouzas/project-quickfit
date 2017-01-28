@@ -26,17 +26,20 @@ function createProgramController($http, $state, ProgramService, $window, $locati
     $ctrl.RadioObj = 'Reps';
   };
   $ctrl.selectExercise = function (item, index) {
+    var top = angular.element('#DbItem' + index).offset().top;
+    $timeout(function() {
+      if ($window.outerWidth < 768) {
+        top = angular.element('#DbItem' + index).offset().top - top;
+        angular.element('body').scrollTop($window.scrollY + top);  
+      }
+    }, 0);       
     item[index].showObjectives = false;
-    $ctrl.exercisesNew.push(angular.copy(item[index]));
-    angular.element('#DbItem' + index).addClass('fadeOutLeft');
-    $rootScope.$applyAsync(function () {
-      angular.element('body').scrollTop(angular.element('#DbItem' + index).offset().top - 100);
-      $timeout(function () {
-       angular.element('#DbItem' + index).removeClass('fadeOutLeft');
-      angular.element('#DbItem' + index).addClass('fadeIn'); 
-    }, 600);   
-    });    
-     
+    $ctrl.exercisesNew.push(angular.copy(item[index]));    
+    angular.element('#DbItem' + index).addClass('fadeOutLeft');          
+    $timeout(function () {        
+        angular.element('#DbItem' + index).removeClass('fadeOutLeft');
+        angular.element('#DbItem' + index).addClass('fadeIn'); 
+    }, 600);        
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);

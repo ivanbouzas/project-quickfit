@@ -5,6 +5,7 @@ body{
   background-color: #FFFFFF;
   font-family: 'Segoe UI';
   font-size: 18px;
+  margin-top: -1px;
 }
 div{
   padding: 3px;
