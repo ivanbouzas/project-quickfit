@@ -32,7 +32,7 @@ function createProgramController($http, $state, ProgramService, $window, $locati
         top = angular.element('#DbItem' + index).offset().top - top;
         angular.element('body').scrollTop($window.scrollY + top);  
       }
-    }, 0);       
+    });       
     item[index].showObjectives = false;
     $ctrl.exercisesNew.push(angular.copy(item[index]));    
     angular.element('#DbItem' + index).addClass('fadeOutLeft');          
