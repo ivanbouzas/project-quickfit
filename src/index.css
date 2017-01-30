@@ -158,7 +158,6 @@ html, body{
 	border-radius: 0px;
   padding: 5px;
 	margin: -6px;
-
 }
 .nav b{
   color: white;
@@ -234,6 +233,10 @@ html, body{
     background-color: transparent;    
 }
 .navbar-default .navbar-nav>li>a:hover {
-    border-bottom: 3px solid #FFE57F;
-    margin-bottom: -3px;  
+  margin-bottom: -4px;
+  transition: 0.1s;
+  border-bottom: 4px solid #FFE57F;    
+}
+.hidelist{
+  display: none;
 }

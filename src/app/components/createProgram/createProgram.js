@@ -1,4 +1,4 @@
-function createProgramController($http, $state, ProgramService, $window, $location, $stateParams, $timeout, $rootScope) {
+function createProgramController($http, $state, ProgramService, $window, $location, $stateParams, $timeout) {
   var $ctrl = this;
   $ctrl.$onInit = function () {
     $ctrl.exercisesNew = [];
@@ -27,19 +27,20 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   };
   $ctrl.selectExercise = function (item, index) {
     var top = angular.element('#DbItem' + index).offset().top;
+    $ctrl.exercisesNew.push(angular.copy(item[index])); 
     $timeout(function() {
-      if ($window.outerWidth < 768) {
-        top = angular.element('#DbItem' + index).offset().top - top;
+      if ($window.outerWidth < 768) {        
+        angular.element('#orderId' + ($ctrl.exercisesNew.length - 1)).removeClass('hide');
+        top = angular.element('#DbItem' + index).offset().top - top;        
         angular.element('body').scrollTop($window.scrollY + top);  
       }
     });       
-    item[index].showObjectives = false;
-    $ctrl.exercisesNew.push(angular.copy(item[index]));    
+    item[index].showObjectives = false;      
     angular.element('#DbItem' + index).addClass('fadeOutLeft');          
     $timeout(function () {        
         angular.element('#DbItem' + index).removeClass('fadeOutLeft');
         angular.element('#DbItem' + index).addClass('fadeIn'); 
-    }, 600);        
+    }, 600);             
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);
