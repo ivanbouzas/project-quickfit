@@ -1,11 +1,12 @@
 <div class="component">
   <div class="row">
-    <div id="popDetailExe" class="popDetailExe col-sm-6 col-sm-offset-3 col-xs-12 animated fadeIn">        
+    <div id="popDetailExe" class="popDetailExe col-sm-6 col-sm-offset-3 col-xs-12 animated fadeIn"> 
+    <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove"></button>       
       <div class="popScroll">
         <div class="row">
           <div class="col-xs-12 title text-center">      
             <h2>Detail</h2>
-            <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove"></button>
+            
           </div>
         </div>        
         <div class="row poplgn">
@@ -13,15 +14,15 @@
           <img class="popImg" src="{{$ctrl.image2}}" ng-show="$ctrl.image2">
         </div>
         <div class="row poplgn">
-          <div class="col-sm-4 col-sm-offset-1"><strong>Exercise Name</strong></div> 
-          <div class="col-sm-6 col-sm-offset-1">{{$ctrl.exercise.name}}</div>
+          <div class="col-xs-4 col-xs-offset-1"><strong>Exercise Name</strong></div> 
+          <div class="col-xs-6 col-xs-offset-1">{{$ctrl.exercise.name}}</div>
         </div>
         <div class="row poplgn">
-          <div class="col-sm-4 col-sm-offset-1"><strong>Category</strong></div> 
-          <div class="col-sm-6 col-sm-offset-1">{{$ctrl.category.name}}</div>
+          <div class="col-xs-4 col-xs-offset-1"><strong>Category</strong></div> 
+          <div class="col-xs-6 col-xs-offset-1">{{$ctrl.category.name}}</div>
         </div>
         <div class="row poplgn">
-          <div class="col-xs-3 col-sm-offset-1"><strong>Description</strong></div> 
+          <div class="col-xs-3 col-xs-offset-1"><strong>Description</strong></div> 
           <div id="descExe" class="poplgn col-xs-10 col-xs-offset-1"></div>
         </div>                    
       </div>

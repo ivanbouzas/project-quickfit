@@ -12,7 +12,7 @@
         </div>        
       </div>
       <ul ui-sortable="sortableOptions" ng-model="$ctrl.exercisesNew" class="list-group">
-        <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item hide" id="orderId{{$index}}">
+        <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item hide animated" id="orderId{{$index}}">
           <div class="row">
             <div class="row">              
               <h4 class="itemName text-center col-xs-6">{{item.name}}</h4> 
@@ -169,7 +169,7 @@
            
     </div>    
   </div>
-<div id="overBody" class="row" ng-show="$ctrl.overBody" ></div>
+<div id="overBody" class="row" ng-show="$ctrl.overBody"></div>
 <exe-detail exe-detail-id="$ctrl.exeDetailId" own-exe="$ctrl.selectedCat" over-body="$ctrl.showHideOverBody()"></exe-detail>
 <exe-new on-save="$ctrl.changeCat()" over-body="$ctrl.showHideOverBody()"></exe-new>
 </div>
