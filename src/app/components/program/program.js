@@ -11,7 +11,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     // true si la routine est terminée
     $ctrl.resume = false;
     $ctrl.overBody = false;
-    $ctrl.restPeriod = 0;
+    $ctrl.restPeriod = Infinity;
   };
   $ctrl.nextSet = function (index, exercise) {
     var date = new Date(-3600000);
