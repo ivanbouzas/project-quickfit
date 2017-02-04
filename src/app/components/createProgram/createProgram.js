@@ -15,12 +15,12 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       $ctrl.oldProgram = ProgramService.getPrograms()[$stateParams.id];
       $ctrl.programTitle = $ctrl.oldProgram.title;
       $ctrl.exercisesNew = $ctrl.oldProgram.exercises;
-      $timeout(function() {
+      $timeout(function () {
         angular.forEach($ctrl.exercisesNew, function (value, key) {
           value.showObjectives = false;
           angular.element('#orderId' + key).removeClass('hide');
         });
-      });      
+      });
     }
     // Initialize les variables pour l'affichage ou non de certains boutons
     $ctrl.activeDelete = true;
@@ -30,25 +30,25 @@ function createProgramController($http, $state, ProgramService, $window, $locati
   };
   $ctrl.selectExercise = function (item, index) {
     var top = angular.element('#DbItem' + index).offset().top;
-    $ctrl.exercisesNew.push(angular.copy(item[index])); 
-    $timeout(function() {
-      if ($window.outerWidth < 768) {        
+    $ctrl.exercisesNew.push(angular.copy(item[index]));
+    $timeout(function () {
+      if ($window.outerWidth < 768) {
         // order important here
         angular.element('#orderId' + ($ctrl.exercisesNew.length - 1)).removeClass('hide');
-        top = angular.element('#DbItem' + index).offset().top - top;        
-        angular.element('body').scrollTop($window.scrollY + top);  
+        top = angular.element('#DbItem' + index).offset().top - top;
+        angular.element('body').scrollTop($window.scrollY + top);
       } else {
         // repetition because if statement must keep structure
         angular.element('#orderId' + ($ctrl.exercisesNew.length - 1)).removeClass('hide');
         angular.element('#orderId' + ($ctrl.exercisesNew.length - 1)).addClass('fadeInDown');
       }
-    });       
-    item[index].showObjectives = false;      
-    angular.element('#DbItem' + index).addClass('fadeOutLeft');          
-    $timeout(function () {               
+    });
+    item[index].showObjectives = false;
+    angular.element('#DbItem' + index).addClass('fadeOutLeft');
+    $timeout(function () {
       angular.element('#DbItem' + index).removeClass('fadeOutLeft');
-      angular.element('#DbItem' + index).addClass('fadeIn'); 
-    }, 600);             
+      angular.element('#DbItem' + index).addClass('fadeIn');
+    }, 600);
   };
   $ctrl.removeExercise = function (index) {
     $ctrl.exercisesNew.splice(index, 1);

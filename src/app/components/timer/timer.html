@@ -1,0 +1,30 @@
+<div class="component">
+<div class="row">
+  <div id="timer" class="timer col-sm-6 col-sm-offset-3 col-xs-12 animated fadeIn">   
+    <button title="Close" ng-click="$ctrl.close()" class="popCross btn btn-default glyphicon glyphicon-remove "></button>  
+    <div class="popScroll">  
+    <div class="row">
+      <div class="col-xs-12 title text-center">      
+        <h2>Timer</h2>                 
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center animated">
+        <span ng-bind="$ctrl.min00 | number:0"></span>
+        <span ng-bind="$ctrl.min0 | number:0"></span>
+        <span>:</span>
+        <span ng-bind="$ctrl.sec00 | number:0"></span>
+        <span ng-bind="$ctrl.sec0 | number:0"></span>
+      </div>
+    </div>      
+    <div class="row">
+        <div class=" text-center">
+          <button class="btn btn-default" ng-click="$ctrl.start()">Start</button>
+          <button class="btn btn-default" ng-click="$ctrl.stop()">Stop</button>
+          <button class="btn btn-default" ng-click="$ctrl.reset()">Reset</button>
+        </div>   
+    </div> 
+    </div>        
+  </div>
+</div>
+</div>

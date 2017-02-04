@@ -84,7 +84,7 @@ html, body{
 .YWBtn, .DbBtn{
   min-width: 130px;
 }
-.popDetailExe, .popNewExe{
+.popDetailExe, .popNewExe, .timer{
   min-width: 360px;
   top: 10%;
   background-color: #FFFFFF;
@@ -95,7 +95,8 @@ html, body{
   z-index: 3;
   height: 80%;
   max-height: 500px;
-  padding: 0px;  
+  padding: 0px; 
+  left: 0px; 
 }
 
 .popImg{
@@ -104,10 +105,12 @@ html, body{
 }
 .popCross{
   position: absolute;
-  padding:3px;
-  width: 30px;
+  padding: 3px;
   z-index: 3;
-  right: 10px;
+  right: 0px;
+  top: 0px;
+  width: 40px;
+  height: 35px;
 }
 .exeInput{
   min-width: 60px;
@@ -240,4 +243,11 @@ html, body{
 }
 .hidelist{
   display: none;
+}
+#timer{
+  font-size: 30px;  
+  max-height: 250px;
+}
+.component{
+  padding: 0px;
 }

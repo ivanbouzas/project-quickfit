@@ -20,6 +20,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/program/:id',
       component: 'program'
     })
+    .state('timer', {
+      url: '/timer',
+      component: 'timer'
+    })
     .state('createProgram', {
       url: '/createProgram?id',
       component: 'createProgram'
