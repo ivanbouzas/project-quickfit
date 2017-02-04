@@ -10,6 +10,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     $ctrl.showObjectiveTxt = [];
     // true si la routine est terminée
     $ctrl.resume = false;
+    $ctrl.overBody = false;
   };
   $ctrl.nextSet = function (index, exercise) {
     var date = new Date(-3600000);
@@ -99,6 +100,14 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
   $ctrl.saveCompletedProg = function () {
     ProgramService.saveProgramById($ctrl.program, $stateParams.id);
     $state.go('programs');
+  };
+  $ctrl.showTimer = function () {
+    angular.element('#timer').css('display', 'block');
+    $ctrl.showHideOverBody();
+  };  
+  // met un fond sur le body lorsqu'un pop up s'affiche
+  $ctrl.showHideOverBody = function () {
+    $ctrl.overBody = !$ctrl.overBody;
   };
 }
 

@@ -140,12 +140,11 @@ html, body{
 .homeBtn{
   font-size: 24px;
 }
-.DbBtn .btn{
-}
 .popScroll{
   height: 95%;
   overflow-y: auto;
   overflow-x: hidden;
+  margin-top: -5px;
 }
 .image{
   margin-left: 250px;
@@ -155,7 +154,7 @@ html, body{
   color: white;
   margin-bottom: 20px;
   padding: 5px;
-  margin-top: -6px;
+  margin-top: -1px;
 }
 .navbar{
 	background: #D32F2F;
@@ -250,4 +249,10 @@ html, body{
 }
 .component{
   padding: 0px;
+}
+.glyphicon-time{
+  color: ;
+}
+.glyphicon-time:hover{
+
 }
