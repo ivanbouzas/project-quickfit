@@ -60,9 +60,9 @@
                   <label class="exeInput">{{item.time | date : 'HH:mm:ss'}}</label>  
                 </div>                
               </div>
-              <div class="col-xs-12" ng-hide="$ctrl.resume || $index !== 0">                
-                <button class="btn btn-default glyphicon glyphicon-ok pull-left"></button>
-                <span class="glyphicon glyphicon-time pull-right btn btn-default" ng-click="$ctrl.showTimer()"></span>
+              <div class="col-xs-12" ng-hide="$ctrl.resume || $index !== 0">    
+                <span class="glyphicon glyphicon-time pull-left btn btn-default" ng-click="$ctrl.showTimer()"></span>            
+                <button class="btn btn-default glyphicon glyphicon-ok pull-right"></button>                
               </div>
               <div class="col-xs-12 animated flash text-center" ng-show="$ctrl.showObjectiveTxt[$index]">
                 <span class="objectiveTxt ">Objective exceeded</span>
