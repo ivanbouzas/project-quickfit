@@ -5,6 +5,12 @@ function timerController($interval) {
   $ctrl.min0 = 0;
   $ctrl.min00 = 0;
   $ctrl.now = 0;
+  $ctrl.$onChanges = function () {
+    if ($ctrl.restPeriod !== 0) {
+      $ctrl.start();
+      $ctrl.overBody();
+    }
+  };
   $ctrl.start = function () {
     angular.element('#timer').removeClass('flash');
     angular.element('#timer').addClass('pulse');
@@ -28,6 +34,14 @@ function timerController($interval) {
           }
         }
       }
+      if ($ctrl.restPeriod !== 0) {
+        $ctrl.totaltimesec = $ctrl.sec0 + $ctrl.sec00 * 10 + $ctrl.min0 * 60 + $ctrl.min00 * 600;
+        if ($ctrl.totaltimesec >= $ctrl.restPeriod) {
+          $ctrl.stop();
+          angular.element('#timer').css('color', 'green');
+          angular.element('#timer').css('font-weight', 'bold');
+        }
+      }
     }, 1000);
   };
   $ctrl.stop = function () {
@@ -42,6 +56,7 @@ function timerController($interval) {
     $ctrl.sec00 = 0;
     $ctrl.min0 = 0;
     $ctrl.min00 = 0;
+    $ctrl.restPeriod = Infinity;
   };
   $ctrl.close = function () {
     angular.element('#timer').attr('style', 'display:none;');
@@ -55,7 +70,8 @@ angular
     templateUrl: 'app/components/timer/timer.html',
     controller: timerController,
     bindings: {
-      overBody: '&'
+      overBody: '&',
+      restPeriod: '<'
     }
   });
 

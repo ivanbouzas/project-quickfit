@@ -11,9 +11,15 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     // true si la routine est terminée
     $ctrl.resume = false;
     $ctrl.overBody = false;
+    $ctrl.restPeriod = 0;
   };
   $ctrl.nextSet = function (index, exercise) {
     var date = new Date(-3600000);
+    $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
+    if ($ctrl.restPeriod !== 0) {
+      $ctrl.showTimer();
+      $ctrl.showHideOverBody();
+    }
     exercise.time = exercise.time === null ? date : new Date(exercise.time);
     doneExercises.push(exercise);
     // Gestion d'un exercice avec plusieurs séries
@@ -104,7 +110,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
   $ctrl.showTimer = function () {
     angular.element('#timer').css('display', 'block');
     $ctrl.showHideOverBody();
-  };  
+  };
   // met un fond sur le body lorsqu'un pop up s'affiche
   $ctrl.showHideOverBody = function () {
     $ctrl.overBody = !$ctrl.overBody;
