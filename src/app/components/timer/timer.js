@@ -8,7 +8,6 @@ function timerController($interval) {
   $ctrl.$onChanges = function () {
     if ($ctrl.restPeriod !== 0 && $ctrl.restPeriod !== Infinity) {
       $ctrl.start();
-      $ctrl.overBody();
     }
   };
   $ctrl.start = function () {

@@ -18,7 +18,6 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
     if ($ctrl.restPeriod !== 0) {
       $ctrl.showTimer();
-      $ctrl.showHideOverBody();
     }
     exercise.time = exercise.time === null ? date : new Date(exercise.time);
     doneExercises.push(exercise);
@@ -109,7 +108,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
   };
   $ctrl.showTimer = function () {
     angular.element('#timer').css('display', 'block');
-    $ctrl.showHideOverBody();
+    $ctrl.showHideOverBody(); 
   };
   // met un fond sur le body lorsqu'un pop up s'affiche
   $ctrl.showHideOverBody = function () {
