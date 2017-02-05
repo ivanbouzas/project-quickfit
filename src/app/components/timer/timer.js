@@ -36,8 +36,8 @@ function timerController($interval) {
         }
         if ($ctrl.restPeriod !== 0) {
           $ctrl.totaltimesec = $ctrl.sec0 + $ctrl.sec00 * 10 + $ctrl.min0 * 60 + $ctrl.min00 * 600;
-          if ($ctrl.totaltimesec >= $ctrl.restPeriod) {            
-            $ctrl.reset();            
+          if ($ctrl.totaltimesec >= $ctrl.restPeriod) {
+            $ctrl.reset();
             angular.element('#timer').css('color', 'green');
             angular.element('#timer').css('font-weight', 'bold');
           }

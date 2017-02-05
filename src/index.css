@@ -242,10 +242,10 @@ html, body{
 .hidelist{
   display: none;
 }
-#timer, .timer{
+.timer{
   font-size: 30px;  
-  top: calc(100% - 200px);
-  height: 200px;
+  top: calc(100% - 180px);
+  height: 180px;
 }
 .component{
   padding: 0px;

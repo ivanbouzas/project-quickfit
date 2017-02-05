@@ -13,12 +13,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     $ctrl.restPeriod = 0;
   };
   $ctrl.nextSet = function (index, exercise) {
-    $ctrl.restPeriod = 0;
     var date = new Date(-3600000);
-    $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
-    if ($ctrl.restPeriod !== 0) {
-      $ctrl.showTimer();
-    }
     exercise.time = exercise.time === null ? date : new Date(exercise.time);
     doneExercises.push(exercise);
     // Gestion d'un exercice avec plusieurs séries
@@ -33,6 +28,12 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
       }
     } else {
       $ctrl.program.exercises[index].nbSets -= 1;
+    }
+    $ctrl.restPeriod = 0;
+    $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
+    if ($ctrl.restPeriod !== 0) {
+      $ctrl.showTimer();
+      angular.element('body').scrollTop(150);
     }
     // Gestion des objectifs, ajout dynamique de class
     if ($ctrl.program.exercises.length === 0) {
