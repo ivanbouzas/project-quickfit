@@ -78,6 +78,7 @@
       <button class="btn btn-default" ng-hide="!$ctrl.resume" ng-click="$ctrl.saveCompletedProg()">Complete Workout</button>
     </div>  
   </div>  
-  <timer  over-body="$ctrl.showHideOverBody()" rest-period="$ctrl.restPeriod"></timer>
-  <div id="overBody" class="row" ng-show="$ctrl.overBody"></div>
+  <div class="row">
+    <timer rest-period="$ctrl.restPeriod"></timer>
+  </div>  
 </div>

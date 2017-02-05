@@ -6,7 +6,7 @@ function timerController($interval) {
   $ctrl.min00 = 0;
   $ctrl.now = 0;
   $ctrl.$onChanges = function () {
-    if ($ctrl.restPeriod !== 0 && $ctrl.restPeriod !== Infinity) {
+    if ($ctrl.restPeriod !== 0) {
       $ctrl.start();
     }
   };
@@ -36,9 +36,8 @@ function timerController($interval) {
         }
         if ($ctrl.restPeriod !== 0) {
           $ctrl.totaltimesec = $ctrl.sec0 + $ctrl.sec00 * 10 + $ctrl.min0 * 60 + $ctrl.min00 * 600;
-          if ($ctrl.totaltimesec >= $ctrl.restPeriod) {
-            $ctrl.reset();
-            $ctrl.stop();
+          if ($ctrl.totaltimesec >= $ctrl.restPeriod) {            
+            $ctrl.reset();            
             angular.element('#timer').css('color', 'green');
             angular.element('#timer').css('font-weight', 'bold');
           }
@@ -54,15 +53,15 @@ function timerController($interval) {
     $ctrl.now = 0;
   };
   $ctrl.reset = function () {
+    $ctrl.stop();
     $ctrl.sec0 = 0;
     $ctrl.sec00 = 0;
     $ctrl.min0 = 0;
     $ctrl.min00 = 0;
-    $ctrl.restPeriod = Infinity;
+    $ctrl.restPeriod = 0;
   };
   $ctrl.close = function () {
     angular.element('#timer').attr('style', 'display:none;');
-    $ctrl.overBody();
   };
 }
 
@@ -72,7 +71,6 @@ angular
     templateUrl: 'app/components/timer/timer.html',
     controller: timerController,
     bindings: {
-      overBody: '&',
       restPeriod: '<'
     }
   });
