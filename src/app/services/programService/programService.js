@@ -17,6 +17,15 @@ function ProgramService() {
           value.exeObjTimeInc = value.exeObjTimeInc === null ? date : new Date(value.exeObjTimeInc);
           value.time = value.time === null ? date : new Date(value.time);
         });
+        if (angular.isDefined(value.notDone)) {
+          angular.forEach(value.doneExercises, function (value) {
+            value.exeUnitTime = value.exeUnitTime === null ? date : new Date(value.exeUnitTime);
+            value.exeUnitRest = value.exeUnitRest === null ? date : new Date(value.exeUnitRest);
+            value.exeObjTime = value.exeObjTime === null ? date : new Date(value.exeObjTime);
+            value.exeObjTimeInc = value.exeObjTimeInc === null ? date : new Date(value.exeObjTimeInc);
+            value.time = value.time === null ? date : new Date(value.time);
+          });
+        }
       });
     }
     return programs;
@@ -37,6 +46,21 @@ function ProgramService() {
   };
   this.saveOwnExercises = function (pOwnExercises) {
     localStorage.setItem(pKeyPerso, angular.toJson(pOwnExercises));
+  };
+  this.saveCurrentProgram = function (currentProgram) {
+    programs = this.getPrograms();
+    if (angular.isDefined(programs[0].notDone)) {
+      programs.shift();
+    }
+    programs.unshift(currentProgram);
+    this.savePrograms(programs);
+  };
+  this.removeNotDoneProgram = function () {
+    programs = this.getPrograms();
+    if (angular.isDefined(programs[0].notDone)) {
+      programs.shift();
+    }
+    this.savePrograms(programs);
   };
 }
 

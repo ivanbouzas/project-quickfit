@@ -1,8 +1,19 @@
 function programController(ProgramService, $stateParams, $state, $timeout) {
   var $ctrl = this;
   var doneExercises = [];
+  var id = $stateParams.id;
   $ctrl.$onInit = function () {
-    $ctrl.program = ProgramService.getPrograms()[$stateParams.id];
+    $ctrl.program = ProgramService.getPrograms()[id];
+    if (angular.isDefined($ctrl.program.notDone)) {
+      doneExercises = angular.copy($ctrl.program.doneExercises);
+      $ctrl.program.doneExercises = undefined;
+      $ctrl.program.notDone = undefined;
+      angular.forEach(ProgramService.getPrograms(), function (value, key) {
+        if (value.title === $ctrl.program.title && angular.isUndefined(value.notDone)) {
+          id = key;
+        }
+      });
+    }
     // gestion dynamique des class de chaque exercice
     // permet d'afficher des bordures différentes
     $ctrl.resumeClass = [];
@@ -19,7 +30,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     // Gestion d'un exercice avec plusieurs séries
     // Animation pour le prochaine exercice
     if ($ctrl.program.exercises[index].nbSets === 1) {
-      $ctrl.program.exercises.splice(index, 1);
+      $ctrl.program.exercises.shift();
       if ($ctrl.program.exercises.length !== 0) {
         angular.element('#exercise' + index).addClass('bounce');
         $timeout(function () {
@@ -38,7 +49,7 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
     // Gestion des objectifs, ajout dynamique de class
     if ($ctrl.program.exercises.length === 0) {
       $ctrl.resume = true;
-      var oldprogram = ProgramService.getPrograms()[$stateParams.id];
+      var oldprogram = ProgramService.getPrograms()[id];
       angular.forEach(oldprogram.exercises, function (value, key) {
         // Compare les 'Reps' avec la séance précédente
         if (angular.isDefined(value.reps)) {
@@ -101,10 +112,20 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
       });
       // Affiche le résumé de la séance
       $ctrl.program.exercises = doneExercises;
+    } else {
+      if (angular.isUndefined(ProgramService.getPrograms()[0].notDone)) {
+        id = parseInt(id, 10) + 1;
+      }
+      var programNotDone = {notDone: true};
+      programNotDone.title = $ctrl.program.title;
+      programNotDone.doneExercises = angular.copy(doneExercises);
+      programNotDone.exercises = angular.copy($ctrl.program.exercises);
+      ProgramService.saveCurrentProgram(programNotDone);
     }
   };
   $ctrl.saveCompletedProg = function () {
-    ProgramService.saveProgramById($ctrl.program, $stateParams.id);
+    ProgramService.saveProgramById($ctrl.program, id);
+    ProgramService.removeNotDoneProgram();
     $state.go('programs');
   };
   $ctrl.showTimer = function () {
