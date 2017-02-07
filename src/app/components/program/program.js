@@ -41,11 +41,13 @@ function programController(ProgramService, $stateParams, $state, $timeout) {
       $ctrl.program.exercises[index].nbSets -= 1;
     }
     $ctrl.restPeriod = 0;
-    $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
-    if ($ctrl.restPeriod !== 0) {
-      $ctrl.showTimer();
-      angular.element('body').scrollTop(150);
-    }
+    $timeout(function () {
+      $ctrl.restPeriod = Math.round((exercise.exeUnitRest - date.getTime()) / 1000);
+      if ($ctrl.restPeriod !== 0) {
+        $ctrl.showTimer();
+        angular.element('body').scrollTop(150);
+      }
+    });    
     // Gestion des objectifs, ajout dynamique de class
     if ($ctrl.program.exercises.length === 0) {
       $ctrl.resume = true;

@@ -164,11 +164,6 @@ input:hover{
 .timeInput{
   width: 115px;
 }
-.timer{
-  font-size: 30px;  
-  top: calc(100% - 180px);
-  height: 180px;
-}
 .saveBtn{
   width: 180px;
   margin-bottom: 10px;
@@ -189,6 +184,11 @@ input:hover{
   max-height: 500px;
   padding: 0px; 
   left: 0px; 
+}
+.timer{
+  font-size: 30px;  
+  top: calc(100% - 180px);
+  height: 180px;
 }
 .popImg{
   width: 100px;
