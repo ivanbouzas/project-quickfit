@@ -190,6 +190,9 @@ input:hover{
   top: calc(100% - 180px);
   height: 180px;
 }
+.timer .popCross{
+  left: 0px;
+}
 .popImg{
   width: 100px;
   clear: right;
