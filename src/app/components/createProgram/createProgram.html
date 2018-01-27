@@ -32,10 +32,16 @@
               <div class="col-md-5 col-md-offset-0 col-xs-offset-1">
                 <label class="col-xs-4">Weight</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="number" step="any" min="0" name="exeUnitWeight" class="exeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeUnitWeight">   </div>
-              </div>                                                                                    
+              </div>                                                                                                 
             </div> 
             <div class="row">
-              <div class="col-lg-5 col-xs-offset-1">
+            	<div class="col-md-5 col-md-offset-1 col-xs-offset-1">
+                <label class="col-xs-4">Last Reps</label>
+                <div class="col-xs-3 col-xs-offset-2"> {{$ctrl.exercisesNew[$index].reps}} </div>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-md-5 col-xs-offset-1">
                 <label class="col-xs-4">Time</label>
                 <div class="col-xs-3 col-xs-offset-2"><input type="time" step="1" name="exeUnitTime" class="exeInput timeInput form-control" ng-model="$ctrl.exercisesNew[$index].exeUnitTime"></div>                            
               </div> 
