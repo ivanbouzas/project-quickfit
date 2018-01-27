@@ -1,0 +1,30 @@
+<div class="component">
+  <div class="row text-center title animated fadeInDown"><h1>Login</h1></div>
+  <div class="row">
+  	<div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 animated fadeInUp">
+  		<form name="formCtrl" ng-submit="$ctrl.login()">
+  			<div class="row">
+  				<div class="col-xs-4">
+  					Email
+  				</div>
+  				<div class="col-xs-8">
+  					<input class="form-control" type="email" name="user" ng-model="$ctrl.user" required>		
+  				</div>
+  			</div>
+	  		<div class="row">
+  				<div class="col-xs-4">
+  					Password
+  				</div>
+  				<div class="col-xs-8">
+  					<input class="form-control" type="password" name="psw" ng-model="$ctrl.password"  required>		
+  				</div>
+  			</div>	 
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-4">
+            <button class="saveBtn btn btn-default center">Connexion</button>
+          </div>
+        </div> 			  		
+	  	</form>
+  	</div>    		
+  </div>
+</div>
