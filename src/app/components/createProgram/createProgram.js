@@ -62,6 +62,12 @@ function createProgramController($http, $state, ProgramService, $window, $locati
       $ctrl.exercisesNew.splice(index - 1, 0, item);
     }
   };
+  $ctrl.changedIndex = function (exercice, newindex, oldindex) { 
+    if (angular.isDefined(newindex) && newindex != null) {
+      $ctrl.exercisesNew.splice(oldindex, 1);
+      $ctrl.exercisesNew.splice(newindex, 0, exercice);
+    }    
+  }
   $ctrl.saveProgram = function () {
     var programs = ProgramService.getPrograms();
     var newprog = {

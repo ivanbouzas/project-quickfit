@@ -15,12 +15,15 @@
         <li ng-repeat="item in $ctrl.exercisesNew track by $index" class="item list-group-item hide animated" id="orderId{{$index}}">
           <div class="row">
             <div class="row">              
-              <h4 class="itemName text-center col-xs-6">{{item.name}}</h4> 
-              <div class="col-xs-6" >    
+              <h4 class="itemName text-center col-xs-5">{{item.name}}</h4> 
+              <div class="col-xs-7" >   
+              	<div class="col-xs-3"><input type="number" step="any" min="0" name="exeIndex" class="exeInput form-control" ng-model="$index" 
+              		ng-init="$ctrl.oldValue=0"
+       ng-focus="$ctrl.oldValue=$index" ng-change=$ctrl.changedIndex(item,$index,$ctrl.oldValue)>  </div> 
                 <div class="btn-group YWBtn" role="group">
                   <div title="Move up" class="btn btn-default glyphicon glyphicon-menu-up" ng-click="$ctrl.HighlowChange($index, item, false)"></div> 
                   <div title="Move down" class="btn btn-default glyphicon glyphicon-menu-down" ng-click="$ctrl.HighlowChange($index, item, true)"></div>  
-                  <div title="Remove" class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></div>   
+                  <div title="Remove" class="btn btn-default glyphicon glyphicon-minus" ng-click="$ctrl.removeExercise($index)"></div>                     
                 </div>
               </div> 
             </div> 
