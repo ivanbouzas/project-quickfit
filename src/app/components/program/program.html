@@ -60,6 +60,14 @@
                   <label class="exeInput">{{item.time | date : 'HH:mm:ss'}}</label>  
                 </div>                
               </div>
+              <div class="col-xs-12" ng-hide="$ctrl.resume">
+                <div class="col-xs-3 col-xs-offset-3">
+                  <label>Objective</label>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1">
+                  <label class="objective">{{item.exeObjRep}}</label>  
+                </div>                
+              </div>
               <div class="col-xs-12" ng-hide="$ctrl.resume || $index !== 0">    
                 <span class="glyphicon glyphicon-time pull-left btn btn-default" ng-click="$ctrl.showTimer()"></span>            
                 <button class="btn btn-default glyphicon glyphicon-ok pull-right"></button>                
